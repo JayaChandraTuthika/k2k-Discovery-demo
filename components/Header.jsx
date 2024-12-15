@@ -1,0 +1,26 @@
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+
+const Header = () => {
+  return (
+    <nav className="header-desktop">
+      <Image
+        src={"/img/infosec-logo-1.svg"}
+        height={50}
+        width={120}
+        alt="logo"
+      />
+      <div className="links">
+        <Link href="/signup" className="sign-up">
+          Signup
+        </Link>
+        <Link href="/login" className="login">
+          Login
+        </Link>
+      </div>
+    </nav>
+  );
+};
+
+export default Header;
