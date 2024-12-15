@@ -15,9 +15,31 @@ const Search = () => {
   const router = useRouter();
   const [goal, setGoal] = useState("");
   const [identifier, setIdentifier] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const onStartInvestigate = () => {
-    router.push("/investigate");
+  const onStartInvestigate = async () => {
+    const payload = {
+      goal,
+      identifier,
+      searchQuery,
+    };
+    console.log("Payload", payload);
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    };
+    try {
+      const response = await fetch(apiUrl + "startSearch", options);
+      console.log("response", response);
+      const data = await response.json();
+      console.log("data", data);
+    } catch (error) {
+      console.log("error", error);
+    }
   };
 
   return (
@@ -37,8 +59,8 @@ const Search = () => {
               <SelectValue placeholder="Select a goal" />
             </SelectTrigger>
             <SelectContent className="options-menu">
-              <SelectItem value="individual">Individual</SelectItem>
-              <SelectItem value="oraganisation">Organisation</SelectItem>
+              <SelectItem value="Individual">Individual</SelectItem>
+              <SelectItem value="Organisation">Organisation</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -52,14 +74,19 @@ const Search = () => {
               <SelectContent className="options-menu">
                 <SelectItem value="username">Username</SelectItem>
                 <SelectItem value="email">Email</SelectItem>
-                <SelectItem value="Phone number">Phone number</SelectItem>
+                <SelectItem value="phoneNumber">Phone number</SelectItem>
                 <SelectItem value="domain">Domain</SelectItem>
               </SelectContent>
             </Select>
           </div>
           <div className="input-group test">
-            <label htmlFor="">Enter text</label>
-            <input type="text" placeholder="Type Something.." />
+            <label htmlFor="">Search query</label>
+            <input
+              type="text"
+              placeholder="Enter your query.."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
           </div>
           <button className="search-btn" onClick={onStartInvestigate}>
             Search
