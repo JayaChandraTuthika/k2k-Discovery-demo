@@ -5,12 +5,15 @@ import React from "react";
 const Header = () => {
   return (
     <nav className="header-desktop">
-      <Image
-        src={"/img/infosec-logo-1.svg"}
-        height={50}
-        width={120}
-        alt="logo"
-      />
+      <Link href="/">
+        <Image
+          src={"/img/infosec-logo-1.svg"}
+          height={50}
+          width={120}
+          alt="logo"
+        />
+      </Link>
+
       <div className="links">
         <Link href="/signup" className="sign-up">
           Signup
