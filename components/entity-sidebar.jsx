@@ -11,7 +11,7 @@ const entityTypes = [
 
 export function EntitySidebar({ onDragStart }) {
   return (
-    <div className="w-64 border-r border-border bg-card p-4 entity-sidebar-main">
+    <div className="w-64 border-r border-border bg-card p-4">
       <h2 className="font-semibold mb-4">Entities</h2>
       <div className="space-y-2">
         {entityTypes.map((entity) => {

@@ -40,6 +40,7 @@ const Search = () => {
     } catch (error) {
       console.log("error", error);
     }
+    router.push("/investigate");
   };
 
   return (

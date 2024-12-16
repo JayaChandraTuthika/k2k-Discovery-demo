@@ -14,12 +14,11 @@ export function EntityNode({ data, selected }) {
 
   return (
     <div
-      className={`
-        px-4 py-2 shadow-lg rounded-lg border cursor-pointer
-        ${selected ? "border-primary" : "border-border"}
-        ${data.type === "ip" ? "bg-secondary" : "bg-secondary"}
-        hover:bg-secondary/80 transition-colors
-      `}
+      className={`px-4 py-2 shadow-lg rounded-lg border cursor-pointer ${
+        selected ? "border-primary" : "border-border"
+      } ${
+        data.type === "ip" ? "bg-yellow-950" : "bg-secondary"
+      } hover:bg-secondary/80 transition-colors`}
     >
       <Handle type="target" position={Position.Top} className="w-2 h-2" />
       <div className="flex items-center gap-2">
