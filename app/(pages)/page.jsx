@@ -29,7 +29,7 @@ export default function Home() {
               </p>
             </div>
             <div className="feature">
-              <Image src="/icon/search.svg" alt="" width={40} height={40} />
+              <Image src="/icon/shield.svg" alt="" width={40} height={40} />
               <h3>Threat Intelligence</h3>
               <p>
                 Real-time monitoring and analysis of potential security threats
@@ -37,7 +37,7 @@ export default function Home() {
               </p>
             </div>
             <div className="feature">
-              <Image src="/icon/search.svg" alt="" width={40} height={40} />
+              <Image src="/icon/globe.svg" alt="" width={40} height={40} />
               <h3>Global Coverage</h3>
               <p>
                 Access to worldwide databases and sources for complete
@@ -45,7 +45,7 @@ export default function Home() {
               </p>
             </div>
             <div className="feature">
-              <Image src="/icon/search.svg" alt="" width={40} height={40} />
+              <Image src="/icon/lock.svg" alt="" width={40} height={40} />
               <h3>Secure Analysis</h3>
               <p>
                 Comprehensive domain analysis and digital footprint mapping with
