@@ -2,7 +2,7 @@
 
 import OsintGraph from "@/components/OsintGraph";
 import { useSearchParams } from "next/navigation";
-import React from "react";
+import React, { Suspense } from "react";
 import { ReactFlowProvider } from "reactflow";
 
 const initialEntity = {
@@ -21,18 +21,26 @@ const initialEntity = {
   ],
 };
 
-export default function Page() {
+function Page() {
   const params = useSearchParams();
   const graphId = params.get("graphId");
   return (
+    <ReactFlowProvider>
+      <OsintGraph
+        initialEntity={initialEntity}
+        graphId={graphId}
+        pollInterval={2000}
+      />
+    </ReactFlowProvider>
+  );
+}
+
+export default function Investigate({ children }) {
+  return (
     <div className="container mx-auto p-4">
-      <ReactFlowProvider>
-        <OsintGraph
-          initialEntity={initialEntity}
-          graphId={graphId}
-          pollInterval={2000}
-        />
-      </ReactFlowProvider>
+      <Suspense fallback={null}>
+        <Page />
+      </Suspense>
     </div>
   );
 }
