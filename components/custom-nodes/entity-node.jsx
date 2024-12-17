@@ -1,24 +1,23 @@
 import { Handle, Position } from "reactflow";
-import { Mail, Phone, User, Globe, Database } from "lucide-react";
+import { Mail, Phone, User, Globe } from "lucide-react";
 
 const iconMap = {
   email: Mail,
   phone: Phone,
   person: User,
-  website: Globe,
-  ip: Database,
+  domain: Globe,
 };
 
-export function EntityNode({ data, selected }) {
+export function EntityNode({ data }) {
   const Icon = iconMap[data.type] || User;
 
   return (
     <div
-      className={`px-4 py-2 shadow-lg rounded-lg border cursor-pointer ${
-        selected ? "border-primary" : "border-border"
-      } ${
-        data.type === "ip" ? "bg-yellow-950" : "bg-secondary"
-      } hover:bg-secondary/80 transition-colors`}
+      className={`
+        px-4 py-2 shadow-lg rounded-lg border cursor-pointer
+        bg-card text-card-foreground
+        hover:bg-accent hover:text-accent-foreground transition-colors
+      `}
     >
       <Handle type="target" position={Position.Top} className="w-2 h-2" />
       <div className="flex items-center gap-2">

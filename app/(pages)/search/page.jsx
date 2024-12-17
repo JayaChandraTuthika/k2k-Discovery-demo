@@ -1,6 +1,7 @@
 "use client";
 import Header from "@/components/Header";
 import React, { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 import {
   Select,
@@ -18,10 +19,13 @@ const Search = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const onStartInvestigate = async () => {
+    const graphId = uuidv4();
+
     const payload = {
       goal,
       identifier,
       searchQuery,
+      graphId,
     };
     console.log("Payload", payload);
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -37,10 +41,13 @@ const Search = () => {
       console.log("response", response);
       const data = await response.json();
       console.log("data", data);
+      router.push("/investigate?graphId=" + graphId);
     } catch (error) {
       console.log("error", error);
     }
-    router.push("/investigate");
+    // router.push("/investigate?graphId=" + graphId);
+
+    // router.push("/investigate");
   };
 
   return (
@@ -60,8 +67,15 @@ const Search = () => {
               <SelectValue placeholder="Select a goal" />
             </SelectTrigger>
             <SelectContent className="options-menu">
-              <SelectItem value="Individual">Individual</SelectItem>
-              <SelectItem value="Organisation">Organisation</SelectItem>
+              <SelectItem value="Brand Monitoring">Brand Monitoring</SelectItem>
+              <SelectItem value="Dark Web Mentions">
+                Dark Web Mentions
+              </SelectItem>
+              <SelectItem value="Risk Assessment">Risk Assessment</SelectItem>
+              <SelectItem value="Threat Intelligence">
+                Threat Intelligence
+              </SelectItem>
+              <SelectItem value="Market Analysis">Market Analysis</SelectItem>
             </SelectContent>
           </Select>
         </div>

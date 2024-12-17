@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,7 +14,6 @@ export function EntityEditModal({
 }) {
   const [label, setLabel] = useState(entity.data.label);
   const [modalPosition, setModalPosition] = useState(position);
-  const modalRef = useRef(null);
 
   useEffect(() => {
     setLabel(entity.data.label);
@@ -44,18 +43,14 @@ export function EntityEditModal({
 
   return (
     <div
-      ref={modalRef}
-      className="fixed bg-card border border-border rounded-lg shadow-lg p-3 w-64"
+      className="fixed bg-card border border-border rounded-lg shadow-lg p-3 w-64 cursor-move"
       style={{
         left: modalPosition.x,
         top: modalPosition.y,
-        cursor: "move",
       }}
+      onMouseDown={handleDragStart}
     >
-      <div
-        className="flex justify-between items-center mb-2"
-        onMouseDown={handleDragStart}
-      >
+      <div className="flex justify-between items-center mb-2">
         <h3 className="font-semibold text-sm">Edit Entity</h3>
         <Button
           variant="ghost"

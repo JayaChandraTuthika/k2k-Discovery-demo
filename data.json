@@ -1,0 +1,70 @@
+{
+  "entities": [
+    {
+      "id": "entity1",
+      "label": "name",
+      "type": "person",
+      "metadata": [
+        {
+          "title": "facebook account",
+          "url": "www.facebook..com"
+        },
+        {
+          "title": "twitter",
+          "url": "twitter.com"
+        }
+      ]
+    },
+    {
+      "id": "entity2",
+      "label": "gmail",
+      "type": "email",
+      "metadata": [
+        {
+          "title": "facebook account",
+          "url": "www.facebook..com"
+        },
+        {
+          "title": "twitter",
+          "url": "twitter.com"
+        }
+      ]
+    },
+    {
+      "id": "entity3",
+      "label": "testwebsite",
+      "type": "domain",
+      "metadata": [
+        {
+          "title": "facebook account",
+          "url": "www.test.com"
+        },
+        {
+          "title": "twitter",
+          "url": "twitter.com"
+        }
+      ]
+    },
+    {
+      "id": "entity4",
+      "label": "test2website",
+      "type": "phoneNumber",
+      "metadata": [
+        {
+          "title": "facebook account",
+          "url": "www.test.com"
+        },
+        {
+          "title": "twitter",
+          "url": "twitter.com"
+        }
+      ]
+    }
+  ],
+  "edges": [
+    { "id": "e-1-entity1", "sourceId": "1", "targetId": "entity1" },
+    { "id": "e-1-entity2", "sourceId": "1", "targetId": "entity2" },
+    { "id": "e-1-entity3", "sourceId": "1", "targetId": "entity3" },
+    { "id": "e-entity3-entity4", "sourceId": "1", "targetId": "entity4" }
+  ]
+}

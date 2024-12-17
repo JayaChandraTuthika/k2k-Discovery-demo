@@ -7,7 +7,7 @@ export default function Home() {
       <Header />
       <main className="landing">
         <div className="intro">
-          <h1>Uncover Digital Footprints</h1>
+          <h1>Uncover Digital Identities</h1>
           <p>
             K2K Discovery: Your all-in-one OSINT platform for comprehensive
             digital intelligence gathering and analysis.
