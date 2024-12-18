@@ -2,6 +2,7 @@
 import Header from "@/components/Header";
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { useToast } from "@/hooks/use-toast";
 
 import {
   Select,
@@ -12,39 +13,90 @@ import {
 } from "@/components/ui/select";
 import { useRouter } from "next/navigation";
 
+const validateInputs = (goal, identifier, searchQuery) => {
+  let inputs = [];
+  if (!goal || goal === "") {
+    inputs.push({
+      valid: false,
+      message: "Please enter a goal",
+    });
+  }
+  if (!identifier || identifier === "") {
+    inputs.push({
+      valid: false,
+      message: "Please enter an identifier",
+    });
+  }
+  if (!searchQuery || searchQuery === "") {
+    inputs.push({
+      valid: false,
+      message: "Please enter a search query",
+    });
+  }
+  if (inputs.length > 0) {
+    if (inputs.length === 1) {
+      return inputs[0];
+    } else {
+      return {
+        valid: false,
+        message: "Please fill in all fields",
+      };
+    }
+  } else {
+    return {
+      valid: true,
+      message: "All fields are valid",
+    };
+  }
+};
+
 const Search = () => {
   const router = useRouter();
   const [goal, setGoal] = useState("");
   const [identifier, setIdentifier] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
+  const { toast } = useToast();
 
   const onStartInvestigate = async () => {
-    const graphId = uuidv4();
+    const validation = validateInputs(goal, identifier, searchQuery);
+    if (validation.valid) {
+      toast({
+        description: validation.message,
+        className: "bg-green-400",
+      });
+      const graphId = uuidv4();
 
-    const payload = {
-      goal,
-      identifier,
-      searchQuery,
-      graphId,
-    };
-    console.log("Payload", payload);
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    };
-    try {
-      const response = await fetch(apiUrl + "startSearch", options);
-      console.log("response", response);
-      const data = await response.json();
-      console.log("data", data);
-      router.push("/investigate?graphId=" + graphId);
-    } catch (error) {
-      console.log("error", error);
+      const payload = {
+        goal,
+        identifier,
+        searchQuery,
+        graphId,
+      };
+      console.log("Payload", payload);
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      };
+      try {
+        const response = await fetch(apiUrl + "startSearch", options);
+        console.log("response", response);
+        const data = await response.json();
+        console.log("data", data);
+        router.push("/investigate?graphId=" + graphId);
+      } catch (error) {
+        console.log("error", error);
+      }
+    } else {
+      toast({
+        description: validation.message,
+        variant: "destructive",
+      });
     }
+
     // router.push("/investigate?graphId=" + graphId);
 
     // router.push("/investigate");
@@ -55,7 +107,13 @@ const Search = () => {
       <Header />
       <div className="header-text">
         <h2>OSINT Search</h2>
-        <button>Reports</button>
+        <button
+          disabled
+          title="this feature is coming soon"
+          style={{ cursor: "not-allowed" }}
+        >
+          Reports
+        </button>
       </div>
       <div className="form">
         <p className="text-1">Select a goal for investigation</p>
