@@ -127,6 +127,7 @@ body {
   color: #25f1e7;
   border-radius: 6px;
   margin-top: 20px;
+  cursor: not-allowed;
 }
 
 .landing .features {
@@ -510,6 +511,15 @@ body {
     rgb(235, 96, 128)
   ) !important;
   color: white !important;
+}
+.options-menu {
+  background-color: #121212e2;
+  /* padding: 6px 15px; */
+  border: 1px solid #5ad0ed53;
+  border-radius: 5px;
+  outline: none !important;
+  font-size: 14px;
+  color: #ffffff;
 }
 @layer base {
   :root {

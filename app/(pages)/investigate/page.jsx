@@ -5,25 +5,25 @@ import { useSearchParams } from "next/navigation";
 import React, { Suspense } from "react";
 import { ReactFlowProvider } from "reactflow";
 
-const initialEntity = {
-  id: "entity1",
-  label: "John Doe",
-  type: "person",
-  metadata: [
-    {
-      title: "Facebook",
-      url: "https://facebook.com/johndoe",
-    },
-    {
-      title: "Twitter",
-      url: "https://twitter.com/johndoe",
-    },
-  ],
-};
+// const initialEntity = {
+//   id: "entity1",
+//   label: "John Doe",
+//   type: "person",
+//   metadata: [],
+// };
 
 function Page() {
   const params = useSearchParams();
   const graphId = params.get("graphId");
+  const search = params.get("search");
+  const identifier = params.get("identifier");
+
+  const initialEntity = {
+    id: "test",
+    label: search,
+    type: identifier,
+    metadata: [],
+  };
   return (
     <ReactFlowProvider>
       <OsintGraph

@@ -1,7 +1,13 @@
+"use client";
 import Header from "@/components/Header";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
+  const navigateToSignup = () => {
+    router.push("/signup");
+  };
   return (
     <>
       <Header />
@@ -13,8 +19,12 @@ export default function Home() {
             digital intelligence gathering and analysis.
           </p>
           <div>
-            <button className="free-trail">Start Free Trail</button>
-            <button className="watch-demo">Watch Demo</button>
+            <button className="free-trail" onClick={navigateToSignup}>
+              Start Free Trail
+            </button>
+            <button className="watch-demo" title="Coming Soon">
+              Watch Demo
+            </button>
           </div>
         </div>
         <div className="features">
@@ -67,7 +77,12 @@ export default function Home() {
         </div>
         <div className="footer">
           <div className="logo-footer">
-            <Image src="/img/infosec-logo-1.svg" width={240} height={120} />
+            <Image
+              src="/img/infosec-logo-1.svg"
+              width={240}
+              height={120}
+              alt=""
+            />
           </div>
           <div className="details">
             <div className="card">
