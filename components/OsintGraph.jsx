@@ -122,6 +122,7 @@ function OsintGraph({ initialEntity, pollInterval = 5000, graphId }) {
 
         const newData = await response.json();
         console.log("from fetch", newData);
+        setSelectedNode(null);
         createNodesAndEdges(newData);
       } catch (error) {
         console.error("Error fetching graph data:", error);
@@ -131,7 +132,7 @@ function OsintGraph({ initialEntity, pollInterval = 5000, graphId }) {
   );
 
   const expandEntity = (entityId) => {
-    const flag = "collapse" || "expand" || "root";
+    const actionTypes = "collapse" || "expand" || "root";
     const action = "expand";
     fetchGraphData(graphId, action, entityId);
     // try {
@@ -152,13 +153,13 @@ function OsintGraph({ initialEntity, pollInterval = 5000, graphId }) {
   };
 
   const collapseEntity = (entityId) => {
-    const flag = "collapse" || "expand" || "root";
+    const actionTypes = "collapse" || "expand" || "root";
     const action = "collapse";
     fetchGraphData(graphId, action, entityId);
   };
 
   const collapseToRoot = () => {
-    const flag = "collapse" || "expand" || "root";
+    const actionTypes = "collapse" || "expand" || "root";
     const action = "root";
     fetchGraphData(graphId, action, "");
   };
