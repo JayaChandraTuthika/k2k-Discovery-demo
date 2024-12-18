@@ -11,6 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+
 import { useRouter } from "next/navigation";
 
 const validateInputs = (goal, identifier, searchQuery) => {
@@ -102,8 +103,16 @@ const Search = () => {
         className: "failed-toast",
       });
     }
+    // const graphId = uuidv4();
 
-    // router.push("/investigate?graphId=" + graphId);
+    // router.push(
+    //   "/investigate?graphId=" +
+    //     graphId +
+    //     "&&search=" +
+    //     searchQuery +
+    //     "&&identifier=" +
+    //     identifier
+    // );
 
     // router.push("/investigate");
   };

@@ -4,7 +4,9 @@ import { Handle, Position } from "reactflow";
 function CustomNode({ data, isConnectable, onClick }) {
   return (
     <div
-      className="px-3 py-2 shadow-md rounded-md bg-white text-sm"
+      className={`px-3 py-2 shadow-md rounded-md bg-white text-sm ${
+        data.type === "root" ? "custom-node-root" : "custom-node-child"
+      } `}
       onClick={onClick}
     >
       <Handle

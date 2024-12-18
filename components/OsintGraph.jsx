@@ -13,11 +13,19 @@ import ReactFlow, {
   useEdgesState,
   useReactFlow,
 } from "reactflow";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import dagre from "dagre";
 import "reactflow/dist/style.css";
 import CustomNode from "./CustomNode";
 import NodeModal from "./NodeModal";
 import { Button } from "./ui/button";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const nodeWidth = 130;
 const nodeHeight = 80;
@@ -53,14 +61,31 @@ const getLayoutedElements = (nodes, edges) => {
   };
 };
 
+const CustomTooltip = ({ content, children, onClick, className }) => {
+  return (
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger onClick={onClick} className={`${className}`}>
+          {children}
+        </TooltipTrigger>
+        <TooltipContent className="bg-emerald-400 text-slate-950">
+          <p>{content}</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  );
+};
+
 function OsintGraph({ initialEntity, pollInterval = 5000, graphId }) {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+  const router = useRouter();
   const { fitView } = useReactFlow();
   const [selectedNode, setSelectedNode] = useState(null);
   const [modalPosition, setModalPosition] = useState({ x: 0, y: 0 });
   const containerRef = useRef(null);
   const isInitialRender = useRef(true);
+  const [graphStatus, setGraphStatus] = useState("processing");
 
   const createNodesAndEdges = useCallback(
     (data) => {
@@ -131,25 +156,36 @@ function OsintGraph({ initialEntity, pollInterval = 5000, graphId }) {
     [createNodesAndEdges]
   );
 
+  const checkGraphStatus = useCallback(async () => {
+    try {
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          graphId: graphId,
+        }),
+      };
+      const response = await fetch(
+        process.env.NEXT_PUBLIC_API_URL + "checkGraphStatus",
+        options
+      );
+      const data = await response.json();
+      if (data.status) {
+        setGraphStatus("completed");
+      } else {
+        setGraphStatus("processing");
+      }
+    } catch (error) {
+      console.error("Error fetching graph data:", error);
+    }
+  }, [graphStatus]);
+
   const expandEntity = (entityId) => {
     const actionTypes = "collapse" || "expand" || "root";
     const action = "expand";
     fetchGraphData(graphId, action, entityId);
-    // try {
-    //   const response = await fetch(
-    //     process.env.NEXT_PUBLIC_API_URL +
-    //       "expandEntity" +
-    //       "?entityId=" +
-    //       entityId +
-    //       "?graphId=" +
-    //       graphId
-    //   );
-    //   const newData = await response.json();
-    //   console.log("from fetch", newData);
-    //   createNodesAndEdges(newData);
-    // } catch (error) {
-    //   console.log(error);
-    // }
   };
 
   const collapseEntity = (entityId) => {
@@ -175,8 +211,8 @@ function OsintGraph({ initialEntity, pollInterval = 5000, graphId }) {
     setTimeout(() => {
       fetchGraphData(graphId, "root", "");
     }, pollInterval);
-    // const interval = setInterval(fetchGraphData, pollInterval);
-    // return () => clearInterval(interval);
+    const interval = setInterval(checkGraphStatus, 5000);
+    return () => clearInterval(interval);
   }, [initialEntity, pollInterval, createNodesAndEdges, fetchGraphData]);
 
   const nodeTypes = useMemo(() => ({ custom: CustomNode }), []);
@@ -209,11 +245,11 @@ function OsintGraph({ initialEntity, pollInterval = 5000, graphId }) {
       >
         <Background gap={12} size={1} className="bg-background" />
         <Controls className="bg-card border border-border rounded-lg !bottom-4 !left-4" />
-        <MiniMap
+        {/* <MiniMap
           className="bg-card border border-border rounded-lg !bottom-4 !right-4"
           nodeColor="#888"
           maskColor="rgb(0, 0, 0, 0.1)"
-        />
+        /> */}
       </ReactFlow>
       <NodeModal
         isOpen={!!selectedNode}
@@ -223,12 +259,39 @@ function OsintGraph({ initialEntity, pollInterval = 5000, graphId }) {
         expandEntity={expandEntity}
         collapseEntity={collapseEntity}
       />
-      <Button
-        className="bg-secondary collapse-all-btn"
-        onClick={collapseToRoot}
-      >
-        Collapse all
-      </Button>
+      <div className="graph-header">
+        <h1>OSINT Graph for {initialEntity.label}</h1>
+        <CustomTooltip
+          className="bg-secondary collapse-all-btn"
+          onClick={collapseToRoot}
+          content="Go back to Root nodes"
+        >
+          Collapse all
+        </CustomTooltip>
+      </div>
+      {graphStatus === "processing" ? (
+        <Button
+          className="bg-secondary graph-report-btn"
+          style={{ cursor: "progress" }}
+        >
+          <Image
+            src="/img/wheel-loader.gif"
+            unoptimized
+            width={30}
+            height={30}
+          />
+          Generating Graph please wait...
+        </Button>
+      ) : (
+        <Button
+          className="bg-secondary graph-report-btn"
+          onClick={() =>
+            router.push("https://kzmnngg4bv9c8f8d4coh.lite.vusercontent.net/")
+          }
+        >
+          Generate report
+        </Button>
+      )}
     </div>
   );
 }

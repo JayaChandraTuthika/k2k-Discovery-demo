@@ -482,17 +482,58 @@ body {
 }
 .graph-bg {
 }
-.collapse-all-btn {
+.graph-header {
   position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 10%;
+  gap: 20px;
+}
+.graph-header h1 {
+  font-size: 30px;
+  font-weight: 600;
+  background-image: var(--infosec-gradient);
+  color: transparent;
+  background-clip: text;
+  -moz-background-clip: text;
+  -webkit-background-clip: text;
+  pointer-events: none;
+  user-select: none;
+}
+.collapse-all-btn {
+  /* position: absolute;
   top: 20px;
-  right: 40px;
+  right: 40px; */
   color: black;
   border: 1px solid transparent;
+  padding: 5px 13px;
+  border-radius: 4px;
+  outline: none !important;
 }
 .collapse-all-btn:hover {
   background-color: transparent !important;
   color: white;
   border: 1px solid white;
+}
+.graph-report-btn {
+  position: absolute;
+  bottom: 30px;
+  right: 40px;
+  color: black;
+  border: 1px solid transparent;
+  padding: 5px 13px;
+  border-radius: 4px;
+  outline: none !important;
+  cursor: pointer;
+  background-color: white;
+}
+.graph-report-btn:hover {
+  color: black;
+  border: 1px solid transparent;
+  background-color: white !important;
 }
 .react-flow__attribution {
   display: none;
@@ -520,6 +561,14 @@ body {
   outline: none !important;
   font-size: 14px;
   color: #ffffff;
+}
+.custom-node-root {
+  background-color: #a2ffe1;
+  color: rgb(0, 0, 0);
+}
+.custom-node-child {
+  background-color: #97eaff;
+  color: rgb(0, 0, 0);
 }
 @layer base {
   :root {

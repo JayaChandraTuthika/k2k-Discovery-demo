@@ -6,8 +6,33 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "./ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const noSelectClass = "select-none";
+
+const CustomTooltip = ({ content, children, onClick, className }) => {
+  return (
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger onClick={onClick} className={`${className}`}>
+          {children}
+        </TooltipTrigger>
+        <TooltipContent
+          className="bg-slate-400 text-slate-950 text-[9px]"
+          side="right"
+          // arrow="true"
+        >
+          <p>{content}</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  );
+};
 
 function NodeModal({
   isOpen,
@@ -98,14 +123,28 @@ function NodeModal({
             {node.data.label}
           </DialogTitle>
           {node.data.type !== "root" && hasChildren && (
-            <Button className="w-min" onClick={() => expandEntity(node.id)}>
+            <CustomTooltip
+              className="w-max bg-slate-900 text-slate-50 p-2 px-5 text-[12px] rounded-sm"
+              onClick={() => expandEntity(node.id)}
+              content="See child entities"
+            >
               Expand children: <span>{node.data.childCount}</span>
-            </Button>
+            </CustomTooltip>
+            // <Button className="w-min" onClick={() => expandEntity(node.id)}>
+            //   Expand children: <span>{node.data.childCount}</span>
+            // </Button>
           )}
           {node.data.type === "root" && (
-            <Button className="w-min" onClick={() => collapseEntity(node.id)}>
+            <CustomTooltip
+              className="w-max bg-slate-900 text-slate-50 p-2 px-5 text-[12px] rounded-sm"
+              onClick={() => collapseEntity(node.id)}
+              content="collapse entity"
+            >
               Back
-            </Button>
+            </CustomTooltip>
+            // <Button className="w-min" onClick={() => collapseEntity(node.id)}>
+            //   Back
+            // </Button>
           )}
         </DialogHeader>
         <div className="p-3 text-xs">
