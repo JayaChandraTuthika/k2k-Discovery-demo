@@ -14,7 +14,8 @@ function NodeModal({
   onClose,
   node,
   initialPosition,
-  expandEntityChildren,
+  expandEntity,
+  collapseEntity,
 }) {
   const [position, setPosition] = useState(initialPosition);
   const [isDragging, setIsDragging] = useState(false);
@@ -96,12 +97,14 @@ function NodeModal({
           <DialogTitle className="text-sm font-semibold">
             {node.data.label}
           </DialogTitle>
-          {hasChildren && (
-            <Button
-              className="w-min"
-              onClick={() => expandEntityChildren(node.id)}
-            >
+          {node.data.type !== "root" && hasChildren && (
+            <Button className="w-min" onClick={() => expandEntity(node.id)}>
               Expand children: <span>{node.data.childCount}</span>
+            </Button>
+          )}
+          {node.data.type === "root" && (
+            <Button className="w-min" onClick={() => collapseEntity(node.id)}>
+              Back
             </Button>
           )}
         </DialogHeader>

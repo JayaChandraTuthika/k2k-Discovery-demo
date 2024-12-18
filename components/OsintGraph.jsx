@@ -17,6 +17,7 @@ import dagre from "dagre";
 import "reactflow/dist/style.css";
 import CustomNode from "./CustomNode";
 import NodeModal from "./NodeModal";
+import { Button } from "./ui/button";
 
 const nodeWidth = 130;
 const nodeHeight = 80;
@@ -98,35 +99,68 @@ function OsintGraph({ initialEntity, pollInterval = 5000, graphId }) {
     [setNodes, setEdges, fitView]
   );
 
-  const fetchGraphData = useCallback(async () => {
-    try {
-      // const response = await fetch("/api/graph-data");
-      const response = await fetch(
-        process.env.NEXT_PUBLIC_API_URL + "fetchGraph" + "?graphId=" + graphId
-      );
+  const fetchGraphData = useCallback(
+    async (graphId, action, entityId) => {
+      try {
+        // const response = await fetch("/api/graph-data");
 
-      const newData = await response.json();
-      console.log("from fetch", newData);
-      createNodesAndEdges(newData);
-    } catch (error) {
-      console.error("Error fetching graph data:", error);
-    }
-  }, [createNodesAndEdges]);
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            graphId: graphId,
+            action: action,
+            entityId: entityId,
+          }),
+        };
+        const response = await fetch(
+          process.env.NEXT_PUBLIC_API_URL + "fetchGraph",
+          options
+        );
 
-  const expandEntityChildren = async (entityId) => {
-    try {
-      const response = await fetch(
-        process.env.NEXT_PUBLIC_API_URL +
-          "expandEntity" +
-          "?entityId=" +
-          entityId
-      );
-      const newData = await response.json();
-      console.log("from fetch", newData);
-      createNodesAndEdges(newData);
-    } catch (error) {
-      console.log(error);
-    }
+        const newData = await response.json();
+        console.log("from fetch", newData);
+        createNodesAndEdges(newData);
+      } catch (error) {
+        console.error("Error fetching graph data:", error);
+      }
+    },
+    [createNodesAndEdges]
+  );
+
+  const expandEntity = (entityId) => {
+    const flag = "collapse" || "expand" || "root";
+    const action = "expand";
+    fetchGraphData(graphId, action, entityId);
+    // try {
+    //   const response = await fetch(
+    //     process.env.NEXT_PUBLIC_API_URL +
+    //       "expandEntity" +
+    //       "?entityId=" +
+    //       entityId +
+    //       "?graphId=" +
+    //       graphId
+    //   );
+    //   const newData = await response.json();
+    //   console.log("from fetch", newData);
+    //   createNodesAndEdges(newData);
+    // } catch (error) {
+    //   console.log(error);
+    // }
+  };
+
+  const collapseEntity = (entityId) => {
+    const flag = "collapse" || "expand" || "root";
+    const action = "collapse";
+    fetchGraphData(graphId, action, entityId);
+  };
+
+  const collapseToRoot = () => {
+    const flag = "collapse" || "expand" || "root";
+    const action = "root";
+    fetchGraphData(graphId, action, "");
   };
 
   useEffect(() => {
@@ -138,7 +172,7 @@ function OsintGraph({ initialEntity, pollInterval = 5000, graphId }) {
 
     // Set up polling
     setTimeout(() => {
-      fetchGraphData();
+      fetchGraphData(graphId, "root", "");
     }, pollInterval);
     // const interval = setInterval(fetchGraphData, pollInterval);
     // return () => clearInterval(interval);
@@ -156,7 +190,7 @@ function OsintGraph({ initialEntity, pollInterval = 5000, graphId }) {
   return (
     <div
       ref={containerRef}
-      className="w-full h-screen flex flex-col bg-background"
+      className="w-full h-screen flex flex-col bg-background graph-bg"
     >
       <ReactFlow
         nodes={nodes}
@@ -185,8 +219,15 @@ function OsintGraph({ initialEntity, pollInterval = 5000, graphId }) {
         onClose={() => setSelectedNode(null)}
         node={selectedNode}
         initialPosition={modalPosition}
-        expandEntityChildren={expandEntityChildren}
+        expandEntity={expandEntity}
+        collapseEntity={collapseEntity}
       />
+      <Button
+        className="bg-secondary collapse-all-btn"
+        onClick={collapseToRoot}
+      >
+        Collapse all
+      </Button>
     </div>
   );
 }

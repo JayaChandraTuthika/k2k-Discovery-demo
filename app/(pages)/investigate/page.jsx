@@ -37,7 +37,7 @@ function Page() {
 
 export default function Investigate({ children }) {
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto">
       <Suspense fallback={null}>
         <Page />
       </Suspense>

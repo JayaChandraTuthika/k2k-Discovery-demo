@@ -479,6 +479,23 @@ body {
   background-color: transparent;
   color: white;
 }
+.graph-bg {
+}
+.collapse-all-btn {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  color: black;
+  border: 1px solid transparent;
+}
+.collapse-all-btn:hover {
+  background-color: transparent !important;
+  color: white;
+  border: 1px solid white;
+}
+.react-flow__attribution {
+  display: none;
+}
 @layer base {
   :root {
     /* --background: 0 0% 100%; */

@@ -5,7 +5,7 @@ let currentData = {
     {
       id: "sclowy_root",
       label: "sclowy.com",
-      type: "domain",
+      type: "root",
       metadata: [{ title: "Domain", url: "https://sclowy.com" }],
     },
     {
