@@ -62,10 +62,9 @@ const Search = () => {
     if (validation.valid) {
       toast({
         description: validation.message,
-        className: "bg-green-400",
+        className: "success-toast",
       });
       const graphId = uuidv4();
-
       const payload = {
         goal,
         identifier,
@@ -93,7 +92,7 @@ const Search = () => {
     } else {
       toast({
         description: validation.message,
-        variant: "destructive",
+        className: "failed-toast",
       });
     }
 

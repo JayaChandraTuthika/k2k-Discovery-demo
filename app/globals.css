@@ -496,6 +496,21 @@ body {
 .react-flow__attribution {
   display: none;
 }
+/* Toast styles */
+.success-toast {
+  border: none;
+  background-image: var(--infosec-gradient) !important;
+  color: white !important;
+}
+.failed-toast {
+  border: none;
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(235, 56, 98),
+    rgb(235, 96, 128)
+  ) !important;
+  color: white !important;
+}
 @layer base {
   :root {
     /* --background: 0 0% 100%; */
