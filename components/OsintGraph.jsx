@@ -158,25 +158,27 @@ function OsintGraph({ initialEntity, pollInterval = 5000, graphId }) {
 
   const checkGraphStatus = useCallback(async () => {
     try {
-      const options = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          graphId: graphId,
-        }),
-      };
-      const response = await fetch(
-        process.env.NEXT_PUBLIC_API_URL + "checkGraphStatus",
-        options
-      );
-      const data = await response.json();
-      if (data.status) {
-        setGraphStatus("completed");
-      } else {
-        setGraphStatus("processing");
-      }
+      // const options = {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({
+      //     graphId: graphId,
+      //   }),
+      // };
+      // const response = await fetch(
+      //   process.env.NEXT_PUBLIC_API_URL + "checkGraphStatus",
+      //   options
+      // );
+      // const data = await response.json();
+
+      // if (data.status) {
+      //   setGraphStatus("completed");
+      // } else {
+      //   setGraphStatus("processing");
+      // }
+      setGraphStatus("completed");
     } catch (error) {
       console.error("Error fetching graph data:", error);
     }
@@ -211,7 +213,7 @@ function OsintGraph({ initialEntity, pollInterval = 5000, graphId }) {
     setTimeout(() => {
       fetchGraphData(graphId, "root", "");
     }, pollInterval);
-    const interval = setInterval(checkGraphStatus, 5000);
+    const interval = setTimeout(checkGraphStatus, 20000);
     return () => clearInterval(interval);
   }, [initialEntity, pollInterval, createNodesAndEdges, fetchGraphData]);
 
@@ -269,7 +271,14 @@ function OsintGraph({ initialEntity, pollInterval = 5000, graphId }) {
           Collapse all
         </CustomTooltip>
       </div>
-      {graphStatus === "processing" ? (
+      {graphStatus === "completed" ? (
+        <Button
+          className="bg-secondary graph-report-btn"
+          onClick={() => router.push("/dashboard")}
+        >
+          Dashboard
+        </Button>
+      ) : (
         <Button
           className="bg-secondary graph-report-btn"
           style={{ cursor: "progress" }}
@@ -279,17 +288,9 @@ function OsintGraph({ initialEntity, pollInterval = 5000, graphId }) {
             unoptimized
             width={30}
             height={30}
+            alt="gears"
           />
           Generating Graph please wait...
-        </Button>
-      ) : (
-        <Button
-          className="bg-secondary graph-report-btn"
-          onClick={() =>
-            router.push("https://kzmnngg4bv9c8f8d4coh.lite.vusercontent.net/")
-          }
-        >
-          Generate report
         </Button>
       )}
     </div>

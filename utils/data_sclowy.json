@@ -1,0 +1,650 @@
+{
+  "dashboard": [
+    {
+      "Brand Monitoring": {
+        "Sentiment Analysis": {
+          "data": [
+            {
+              "date": "2024-12-01",
+              "positive": 150,
+              "neutral": 100,
+              "negative": 50,
+              "source": "Twitter API"
+            },
+            {
+              "date": "2024-12-02",
+              "positive": 130,
+              "neutral": 90,
+              "negative": 60,
+              "source": "LinkedIn Insights"
+            },
+            {
+              "date": "2024-12-03",
+              "positive": 170,
+              "neutral": 80,
+              "negative": 40,
+              "source": "Facebook Data"
+            }
+          ],
+          "charts": ["line_chart", "pie_chart"],
+          "insights": "Over the past three days, positive sentiments have consistently outnumbered neutral and negative sentiments, indicating a favorable brand perception.",
+          "recommendations": [
+            {
+              "action": "Maintain engagement strategies",
+              "details": "Continue current marketing and engagement efforts to sustain positive sentiment.",
+              "source": "Marketing Best Practices"
+            }
+          ]
+        },
+        "Platform-Specific Insights": {
+          "data": [
+            { "platform": "Twitter", "mentions": 250, "source": "Twitter API" },
+            {
+              "platform": "LinkedIn",
+              "mentions": 180,
+              "source": "LinkedIn Insights"
+            },
+            {
+              "platform": "Facebook",
+              "mentions": 90,
+              "source": "Facebook Data"
+            }
+          ],
+          "charts": ["bar_chart"],
+          "tables": [
+            {
+              "mention": "@SC_Lowy Great insights on the Asian market!",
+              "platform": "Twitter",
+              "date": "2024-12-02",
+              "source": "Twitter API"
+            },
+            {
+              "mention": "SC Lowy's latest report is a must-read.",
+              "platform": "LinkedIn",
+              "date": "2024-12-01",
+              "source": "LinkedIn Insights"
+            }
+          ],
+          "insights": "Twitter has the highest engagement, with notable positive mentions highlighting SC Lowy's influence in the market.",
+          "recommendations": [
+            {
+              "action": "Leverage Twitter engagement",
+              "details": "Increase content sharing and interaction on Twitter to capitalize on high engagement.",
+              "source": "Social Media Strategy Guide"
+            }
+          ]
+        },
+        "Alerts and Recommendations": {
+          "alerts": [
+            {
+              "severity": "High",
+              "message": "Negative sentiment spike detected on Twitter.",
+              "source": "Twitter API Analysis"
+            },
+            {
+              "severity": "Medium",
+              "message": "Increased mentions from competitors.",
+              "source": "Brandwatch Competitive Monitoring"
+            }
+          ],
+          "recommendations": [
+            {
+              "action": "Engage with negative mentions",
+              "details": "Address concerns raised on Twitter to mitigate negative sentiment.",
+              "source": "Customer Experience Playbook"
+            },
+            {
+              "action": "Enhance positive outreach on LinkedIn",
+              "details": "Leverage LinkedIn's professional network to strengthen brand perception.",
+              "source": "LinkedIn Best Practices Guide"
+            }
+          ]
+        },
+        "Competitor Comparison": {
+          "data": [
+            {
+              "competitor_name": "Heptagon Capital",
+              "sentiment_score": 70,
+              "source": "Brandwatch"
+            },
+            {
+              "competitor_name": "IlliquidX",
+              "sentiment_score": 65,
+              "source": "Brandwatch"
+            },
+            {
+              "competitor_name": "THE BARROS GROUP",
+              "sentiment_score": 80,
+              "source": "Brandwatch"
+            }
+          ],
+          "charts": ["comparison_chart"],
+          "insights": "SC Lowy's sentiment score is competitive, but there's room for improvement to surpass THE BARROS GROUP.",
+          "recommendations": [
+            {
+              "action": "Analyze competitor strategies",
+              "details": "Study THE BARROS GROUP's engagement tactics to identify areas for improvement.",
+              "source": "Competitive Analysis Report"
+            }
+          ]
+        },
+        "Trend Analysis": {
+          "data_points_over_time": [
+            {
+              "date": "2024-12-01",
+              "keywords": ["credit", "investment", "Asia"],
+              "source": "Google Trends"
+            },
+            {
+              "date": "2024-12-02",
+              "keywords": ["lending", "risk", "market"],
+              "source": "Google Trends"
+            },
+            {
+              "date": "2024-12-03",
+              "keywords": ["opportunity", "growth", "returns"],
+              "source": "Google Trends"
+            }
+          ],
+          "charts": ["timeline_graph", "keyword_cloud"],
+          "insights": "The evolving keyword trends suggest a shifting focus towards growth and returns, indicating market optimism.",
+          "recommendations": [
+            {
+              "action": "Align content with trending topics",
+              "details": "Create content that addresses emerging trends to engage the target audience.",
+              "source": "Content Marketing Strategy"
+            }
+          ]
+        }
+      },
+      "Dark Web Mentions": {
+        "Compromised Data Reports": {
+          "data": [],
+          "tables": ["compromised_credentials_table"],
+          "insights": "No compromised credentials detected, indicating strong security measures are in place.",
+          "recommendations": [
+            {
+              "action": "Maintain current security protocols",
+              "details": "Continue regular security audits and monitoring to ensure ongoing protection.",
+              "source": "ISO 27001 Compliance Guide"
+            }
+          ]
+        },
+        "Alerts": [
+          {
+            "severity": "Low",
+            "message": "No significant threats detected on the dark web.",
+            "source": "Dark Web Monitoring Tool"
+          }
+        ],
+        "Heatmap/FrequencyChart": {
+          "data": [
+            {
+              "date": "2024-12-01",
+              "mentions": 0,
+              "source": "Dark Web Monitoring Tool"
+            },
+            {
+              "date": "2024-12-02",
+              "mentions": 0,
+              "source": "Dark Web Monitoring Tool"
+            },
+            {
+              "date": "2024-12-03",
+              "mentions": 0,
+              "source": "Dark Web Monitoring Tool"
+            }
+          ],
+          "charts": ["heatmap_chart"],
+          "insights": "No dark web mentions detected, reflecting a secure digital footprint.",
+          "recommendations": [
+            {
+              "action": "Continue monitoring",
+              "details": "Maintain vigilance through continuous dark web monitoring to promptly detect any future threats.",
+              "source": "Cybersecurity Monitoring Best Practices"
+            }
+          ]
+        },
+        "Threat Actor Activity": [
+          {
+            "actor_name": "None",
+            "activity_level": "None",
+            "details": "No threat actor activity detected related to SC Lowy.",
+            "source": "Dark Web Monitoring Tool"
+          }
+        ]
+      },
+
+      "Risk Assessment": {
+        "Risk Overview": {
+          "data": [
+            {
+              "risk_level": "Critical",
+              "percentage": 5,
+              "source": "Internal Risk Assessment Report"
+            },
+            {
+              "risk_level": "High",
+              "percentage": 15,
+              "source": "Internal Risk Assessment Report"
+            },
+            {
+              "risk_level": "Medium",
+              "percentage": 30,
+              "source": "Internal Risk Assessment Report"
+            },
+            {
+              "risk_level": "Low",
+              "percentage": 50,
+              "source": "Internal Risk Assessment Report"
+            }
+          ],
+          "charts": ["donut_chart"],
+          "insights": "The majority of risks are categorized as low to medium, with a small percentage identified as critical.",
+          "recommendations": [
+            {
+              "action": "Prioritize critical risks",
+              "details": "Allocate resources to address critical risks immediately to mitigate potential impacts.",
+              "source": "Risk Management Best Practices"
+            }
+          ]
+        },
+        "Asset Inventory": {
+          "data": [
+            {
+              "asset_name": "Investment Fund A",
+              "risk_tag": "High",
+              "source": "Asset Management System"
+            },
+            {
+              "asset_name": "Investment Fund B",
+              "risk_tag": "Medium",
+              "source": "Asset Management System"
+            }
+          ],
+          "tables": ["asset_inventory_table"],
+          "insights": "Investment Fund A is tagged as high risk, necessitating closer monitoring and potential risk mitigation strategies.",
+          "recommendations": [
+            {
+              "action": "Review Investment Fund A",
+              "details": "Conduct a thorough analysis of Investment Fund A to identify and address underlying risk factors.",
+              "source": "Portfolio Risk Assessment Guidelines"
+            }
+          ]
+        },
+        "Compliance and Policy Gaps": {
+          "data": [
+            {
+              "policy_name": "Data Protection Policy",
+              "score": 75,
+              "source": "Compliance Audit Report"
+            },
+            {
+              "policy_name": "Risk Management Policy",
+              "score": 60,
+              "source": "Compliance Audit Report"
+            }
+          ],
+          "charts": ["trendline_chart"],
+          "insights": "The Risk Management Policy has a lower compliance score, indicating areas that require improvement to meet regulatory standards.",
+          "recommendations": [
+            {
+              "action": "Enhance Risk Management Policy",
+              "details": "Update and strengthen the Risk Management Policy to improve compliance scores.",
+              "source": "Regulatory Compliance Framework"
+            }
+          ]
+        },
+        "Risk Trends": {
+          "data": [
+            {
+              "date": "2024-11-01",
+              "risk_level": "Medium",
+              "source": "Risk Monitoring System"
+            },
+            {
+              "date": "2024-11-15",
+              "risk_level": "High",
+              "source": "Risk Monitoring System"
+            },
+            {
+              "date": "2024-11-30",
+              "risk_level": "Critical",
+              "source": "Risk Monitoring System"
+            }
+          ],
+          "charts": ["line_chart"],
+          "insights": "There is an upward trend in risk levels over the past month, escalating from medium to critical.",
+          "recommendations": [
+            {
+              "action": "Investigate rising risk levels",
+              "details": "Analyze the factors contributing to increasing risk levels and implement corrective actions.",
+              "source": "Risk Analysis Procedures"
+            }
+          ]
+        },
+        "Mitigation Plan": {
+          "steps": [
+            {
+              "step": 1,
+              "action_item": "Conduct regular security audits",
+              "details": "Schedule and perform comprehensive security audits to identify vulnerabilities.",
+              "source": "Cybersecurity Audit Checklist"
+            },
+            {
+              "step": 2,
+              "action_item": "Enhance employee training on cybersecurity",
+              "details": "Implement training programs to educate employees on cybersecurity best practices.",
+              "source": "Employee Training Manual"
+            }
+          ],
+          "insights": "Implementing regular security audits and enhancing employee training are proactive steps to mitigate identified risks.",
+          "recommendations": [
+            {
+              "action": "Implement mitigation plan",
+              "details": "Follow the outlined steps to address and reduce identified risks effectively.",
+              "source": "Risk Mitigation Strategy"
+            }
+          ]
+        }
+      },
+
+      "Threat Intelligence": {
+        "Threat Alerts": {
+          "data": [
+            {
+              "alert_id": 1,
+              "severity": "High",
+              "timestamp": "2024-12-01T10:00:00Z",
+              "description": "Detected phishing attempt targeting employee emails.",
+              "source": "Internal Security Monitoring System",
+              "mitre_attack_mapping": {
+                "technique_id": "T1566",
+                "technique_name": "Phishing",
+                "url": "https://attack.mitre.org/techniques/T1566/"
+              }
+            },
+            {
+              "alert_id": 2,
+              "severity": "Medium",
+              "timestamp": "2024-12-02T11:30:00Z",
+              "description": "Unusual login activity from foreign IP addresses.",
+              "source": "Internal Security Monitoring System",
+              "mitre_attack_mapping": {
+                "technique_id": "T1078",
+                "technique_name": "Valid Accounts",
+                "url": "https://attack.mitre.org/techniques/T1078/"
+              }
+            }
+          ],
+          "insights": "Recent alerts indicate targeted phishing attempts and suspicious login activities, suggesting potential reconnaissance by threat actors.",
+          "recommendations": [
+            {
+              "action": "Enhance email security protocols",
+              "details": "Implement advanced email filtering and employee training to mitigate phishing risks.",
+              "source": "Cybersecurity Best Practices Guide"
+            },
+            {
+              "action": "Monitor and restrict foreign access",
+              "details": "Review and tighten access controls to prevent unauthorized logins from foreign IPs.",
+              "source": "Access Control Policy"
+            }
+          ]
+        },
+        "Threat Actor Profiles": {
+          "profiles": [
+            {
+              "actor_name": "APT28",
+              "description": "Russian cyber espionage group known for targeting financial institutions.",
+              "source": "Cyber Threat Intelligence Report",
+              "mitre_attack_mapping": {
+                "group_id": "G0007",
+                "group_name": "APT28",
+                "url": "https://attack.mitre.org/groups/G0007/"
+              }
+            },
+            {
+              "actor_name": "Lazarus Group",
+              "description": "North Korean state-sponsored hackers with a focus on financial theft.",
+              "source": "Cyber Threat Intelligence Report",
+              "mitre_attack_mapping": {
+                "group_id": "G0032",
+                "group_name": "Lazarus Group",
+                "url": "https://attack.mitre.org/groups/G0032/"
+              }
+            }
+          ],
+          "insights": "These threat actors have a history of targeting financial entities, aligning with the industry in which SC Lowy operates.",
+          "recommendations": [
+            {
+              "action": "Stay informed on threat actor TTPs",
+              "details": "Regularly update defenses based on the latest tactics, techniques, and procedures of identified threat actors.",
+              "source": "MITRE ATT&CK Framework"
+            }
+          ]
+        },
+        "Vulnerability Analysis": {
+          "data": [
+            {
+              "vulnerability_type": "SQL Injection",
+              "severity_level": "Critical",
+              "description": "Allows attackers to execute arbitrary SQL code.",
+              "source": "Internal Vulnerability Scan",
+              "mitre_attack_mapping": {
+                "technique_id": "T1190",
+                "technique_name": "Exploit Public-Facing Application",
+                "url": "https://attack.mitre.org/techniques/T1190/"
+              }
+            },
+            {
+              "vulnerability_type": "Phishing Attack",
+              "severity_level": "High",
+              "description": "Deceptive attempts to obtain sensitive information via email.",
+              "source": "Internal Incident Reports",
+              "mitre_attack_mapping": {
+                "technique_id": "T1566",
+                "technique_name": "Phishing",
+                "url": "https://attack.mitre.org/techniques/T1566/"
+              }
+            }
+          ],
+          "charts": ["vulnerability_severity_chart"],
+          "insights": "Critical vulnerabilities like SQL Injection pose significant risks to data integrity and confidentiality.",
+          "recommendations": [
+            {
+              "action": "Implement input validation",
+              "details": "Ensure all user inputs are properly sanitized to prevent SQL Injection attacks.",
+              "source": "OWASP Security Guidelines"
+            },
+            {
+              "action": "Conduct phishing awareness training",
+              "details": "Educate employees to recognize and report phishing attempts.",
+              "source": "Employee Cybersecurity Training Program"
+            }
+          ]
+        },
+        "Defense Recommendations": {
+          "recommendations": [
+            {
+              "recommendation_text": "Implement network segmentation to limit lateral movement of potential intruders.",
+              "source": "Network Security Best Practices"
+            },
+            {
+              "recommendation_text": "Regularly update software and systems to patch known vulnerabilities.",
+              "source": "Software Maintenance Policy"
+            }
+          ],
+          "insights": "Adhering to these defense measures will strengthen SC Lowy's cybersecurity posture against prevalent threats."
+        },
+        "Live Threat Map": {
+          "data": [
+            {
+              "origin_country": "Russia",
+              "target_country": "USA",
+              "description": "Detected cyber espionage activities.",
+              "source": "Global Threat Intelligence Feed"
+            },
+            {
+              "origin_country": "North Korea",
+              "target_country": "South Korea",
+              "description": "Identified financial theft operations.",
+              "source": "Global Threat Intelligence Feed"
+            }
+          ],
+          "insights": "Current threat landscape shows significant cyber activities originating from nation-state actors targeting financial sectors.",
+          "recommendations": [
+            {
+              "action": "Enhance geopolitical threat awareness",
+              "details": "Stay informed about global cyber threat trends to better anticipate and defend against potential attacks.",
+              "source": "Geopolitical Cyber Threat Analysis"
+            }
+          ]
+        }
+      },
+      "Market Analysis": {
+        "Competitor Activity": {
+          "data": [
+            {
+              "competitor_name": "Heptagon Capital",
+              "performance_metric": "15% growth in AUM",
+              "source": "Financial Times"
+            },
+            {
+              "competitor_name": "IlliquidX",
+              "performance_metric": "10% increase in deal volume",
+              "source": "Bloomberg"
+            },
+            {
+              "competitor_name": "THE BARROS GROUP",
+              "performance_metric": "20% expansion in client base",
+              "source": "Reuters"
+            }
+          ],
+          "charts": ["bar_chart"],
+          "insights": "Competitors are experiencing significant growth, with THE BARROS GROUP leading in client base expansion.",
+          "recommendations": [
+            {
+              "action": "Enhance client acquisition strategies",
+              "details": "Develop targeted marketing campaigns to attract new clients and expand market share.",
+              "source": "Marketing Strategy Report"
+            }
+          ]
+        },
+        "Market Trends": {
+          "data": [
+            {
+              "date": "2024-11",
+              "trending_keywords": [
+                "private credit",
+                "investment opportunities"
+              ],
+              "source": "Google Trends"
+            },
+            {
+              "date": "2024-12",
+              "trending_keywords": ["market volatility", "risk management"],
+              "source": "Google Trends"
+            }
+          ],
+          "charts": ["timeline_graph", "keyword_cloud"],
+          "insights": "Recent trends indicate a growing interest in risk management solutions amid market volatility.",
+          "recommendations": [
+            {
+              "action": "Develop risk management products",
+              "details": "Introduce services that address market volatility concerns to meet emerging client needs.",
+              "source": "Product Development Insights"
+            }
+          ]
+        },
+        "Comparative Analysis": {
+          "data": [
+            {
+              "metric_name": "Assets Under Management (AUM in billion USD)",
+              "SC_Lowy_value": 1.6,
+              "Competitor_value": {
+                "Heptagon Capital": 1.8,
+                "IlliquidX": 1.5,
+                "THE BARROS GROUP": 2.0
+              },
+              "source": "Company Financial Reports"
+            },
+            {
+              "metric_name": "Revenue Growth (%)",
+              "SC_Lowy_value": 10,
+              "Competitor_value": {
+                "Heptagon Capital": 12,
+                "IlliquidX": 9,
+                "THE BARROS GROUP": 15
+              },
+              "source": "Market Analysis Report"
+            }
+          ],
+          "charts": ["comparison_chart"],
+          "insights": "SC Lowy's AUM and revenue growth are competitive, though slightly trailing behind THE BARROS GROUP.",
+          "recommendations": [
+            {
+              "action": "Implement growth initiatives",
+              "details": "Explore strategic partnerships and new market entries to boost AUM and revenue.",
+              "source": "Strategic Growth Plan"
+            }
+          ]
+        },
+        "Opportunities & Threats": {
+          "opportunities": [
+            {
+              "insight_text": "Emerging markets present new investment opportunities.",
+              "source": "Market Research Report"
+            },
+            {
+              "insight_text": "Increased demand for private credit solutions.",
+              "source": "Industry Analysis"
+            }
+          ],
+          "threats": [
+            {
+              "insight_text": "Intensifying competition in the private credit space.",
+              "source": "Competitive Landscape Study"
+            },
+            {
+              "insight_text": "Regulatory changes impacting investment strategies.",
+              "source": "Regulatory Update"
+            }
+          ],
+          "insights": "While emerging markets and rising demand offer growth prospects, heightened competition and regulatory shifts pose challenges.",
+          "recommendations": [
+            {
+              "action": "Diversify investment portfolio",
+              "details": "Allocate resources to emerging markets to capitalize on new opportunities.",
+              "source": "Investment Strategy Report"
+            },
+            {
+              "action": "Stay abreast of regulatory developments",
+              "details": "Regularly review and adjust strategies to comply with changing regulations.",
+              "source": "Compliance Advisory"
+            }
+          ]
+        },
+        "Dashboard Insights": {
+          "summaries": [
+            {
+              "summary_text": "SC Lowy maintains a strong market position with steady growth.",
+              "source": "Annual Financial Report"
+            },
+            {
+              "summary_text": "Competitors are increasing their market presence in Asia.",
+              "source": "Regional Market Analysis"
+            }
+          ],
+          "insights": "SC Lowy's consistent performance is commendable; however, proactive measures are necessary to address escalating competition in the Asian market.",
+          "recommendations": [
+            {
+              "action": "Enhance regional strategies",
+              "details": "Strengthen operations and marketing efforts in Asia to maintain competitive advantage.",
+              "source": "Regional Strategy Document"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

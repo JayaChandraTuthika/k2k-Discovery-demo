@@ -1,0 +1,198 @@
+"use client";
+
+import { Pie, PieChart, Line, LineChart } from "recharts";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ChartContainer, ChartTooltip } from "@/components/ui/chart";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { useData } from "../hooks/useData";
+
+export default function RiskAssessment() {
+  const { data, loading, error } = useData("risk-assessment");
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+  if (!data) return <div>No data available</div>;
+
+  const {
+    "Risk Overview": riskOverview,
+    "Asset Inventory": assetInventory,
+    "Compliance and Policy Gaps": complianceGaps,
+    "Risk Trends": riskTrends,
+    "Mitigation Plan": mitigationPlan,
+  } = data;
+
+  riskOverview.data = [
+    {
+      risk_level: "Critical",
+      percentage: 5,
+      source: "Internal Risk Assessment Report",
+    },
+    {
+      risk_level: "High",
+      percentage: 15,
+      source: "Internal Risk Assessment Report",
+    },
+    {
+      risk_level: "Medium",
+      percentage: 30,
+      source: "Internal Risk Assessment Report",
+    },
+    {
+      risk_level: "Low",
+      percentage: 50,
+      source: "Internal Risk Assessment Report",
+    },
+  ];
+  console.log(riskTrends.data);
+  return (
+    <div className="space-y-4">
+      <div className="grid gap-4 md:grid-cols-2">
+        <Card>
+          <CardHeader>
+            <CardTitle>Risk Overview</CardTitle>
+          </CardHeader>
+          <CardContent>
+            {riskOverview.data.length > 0 ? (
+              <ChartContainer
+                className="h-[300px]"
+                config={riskOverview.data.reduce((acc, item) => {
+                  acc[item.risk_level] = {
+                    label: item.risk_level,
+                    color: `hsl(${Math.random() * 360}, 70%, 50%)`,
+                  };
+                  return acc;
+                }, {})}
+              >
+                <PieChart>
+                  <Pie
+                    data={riskOverview.data}
+                    dataKey="percentage"
+                    nameKey="risk_level"
+                    cx="50%"
+                    cy="50%"
+                    outerRadius={120}
+                  />
+                  <ChartTooltip />
+                </PieChart>
+              </ChartContainer>
+            ) : (
+              <div>No risk overview data available</div>
+            )}
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Asset Inventory</CardTitle>
+          </CardHeader>
+          <CardContent>
+            {assetInventory.data.length > 0 ? (
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Asset</TableHead>
+                    <TableHead>Risk Level</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {assetInventory.data.map((asset, index) => (
+                    <TableRow key={index}>
+                      <TableCell>{asset.asset_name}</TableCell>
+                      <TableCell
+                        className={`text-${asset.risk_tag.toLowerCase()}`}
+                      >
+                        {asset.risk_tag}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            ) : (
+              <div>No asset inventory data available</div>
+            )}
+          </CardContent>
+        </Card>
+      </div>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Compliance and Policy Gaps</CardTitle>
+        </CardHeader>
+        <CardContent>
+          {complianceGaps.data.length > 0 ? (
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Policy</TableHead>
+                  <TableHead>Score</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {complianceGaps.data.map((item, index) => (
+                  <TableRow key={index}>
+                    <TableCell>{item.policy_name}</TableCell>
+                    <TableCell>{item.score}%</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          ) : (
+            <div>No compliance data available</div>
+          )}
+        </CardContent>
+      </Card>
+
+      {/* <Card className="bg-transparent text-white">
+        <CardHeader>
+          <CardTitle>Risk Trends</CardTitle>
+        </CardHeader>
+        <CardContent>
+          {riskTrends.data.length > 0 ? (
+            <ChartContainer
+              className="h-[300px]"
+              config={{
+                risk_level: {
+                  label: "Risk Level",
+                  color: "#6898f7",
+                },
+              }}
+            >
+              <LineChart data={riskTrends.data}>
+                <Line type="monotone" dataKey="risk_level" stroke="#6898f7" />
+                <ChartTooltip />
+              </LineChart>
+            </ChartContainer>
+          ) : (
+            <div>No risk trend data available</div>
+          )}
+        </CardContent>
+      </Card> */}
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Mitigation Plan</CardTitle>
+        </CardHeader>
+        <CardContent>
+          {mitigationPlan.steps.length > 0 ? (
+            <ol className="list-decimal list-inside space-y-2">
+              {mitigationPlan.steps.map((step, index) => (
+                <li key={index}>
+                  <strong>{step.action_item}:</strong> {step.details}
+                </li>
+              ))}
+            </ol>
+          ) : (
+            <div>No mitigation plan available</div>
+          )}
+        </CardContent>
+      </Card>
+    </div>
+  );
+}

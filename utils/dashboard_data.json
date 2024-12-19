@@ -1,0 +1,584 @@
+{
+  "dashboard1": {
+    "Brand Monitoring": {
+      "Sentiment Analysis": {
+        "data": [
+          {
+            "date": "2024-12-01",
+            "positive": 150,
+            "neutral": 100,
+            "negative": 50,
+            "source": "Twitter API"
+          },
+          {
+            "date": "2024-12-02",
+            "positive": 130,
+            "neutral": 90,
+            "negative": 60,
+            "source": "LinkedIn Insights"
+          },
+          {
+            "date": "2024-12-03",
+            "positive": 170,
+            "neutral": 80,
+            "negative": 40,
+            "source": "Facebook Data"
+          }
+        ],
+        "charts": ["line_chart", "pie_chart"],
+        "insights": "Over the past three days, positive sentiments have consistently outnumbered neutral and negative sentiments, indicating a favorable brand perception.",
+        "source": "Aggregated Social Media Data (Hootsuite, Brandwatch)"
+      },
+      "Platform-Specific Insights": {
+        "data": [
+          { "platform": "Twitter", "mentions": 250, "source": "Twitter API" },
+          {
+            "platform": "LinkedIn",
+            "mentions": 180,
+            "source": "LinkedIn Insights"
+          },
+          { "platform": "Facebook", "mentions": 90, "source": "Facebook Data" }
+        ],
+        "charts": ["bar_chart"],
+        "tables": [
+          {
+            "mention": "@SC_Lowy Great insights on the Asian market!",
+            "platform": "Twitter",
+            "date": "2024-12-02",
+            "source": "Twitter API"
+          },
+          {
+            "mention": "SC Lowy's latest report is a must-read.",
+            "platform": "LinkedIn",
+            "date": "2024-12-01",
+            "source": "LinkedIn Insights"
+          }
+        ],
+        "insights": "Twitter has the highest engagement, with notable positive mentions highlighting SC Lowy's influence in the market.",
+        "source": "Aggregated Social Media Data (Hootsuite, Brandwatch)"
+      },
+      "Product Sentiment Analysis": {
+        "data": [
+          {
+            "product": "Private Credit Fund",
+            "positive": 120,
+            "neutral": 30,
+            "negative": 10,
+            "source": "SurveyMonkey Feedback"
+          },
+          {
+            "product": "Special Situations Fund",
+            "positive": 90,
+            "neutral": 40,
+            "negative": 20,
+            "source": "SurveyMonkey Feedback"
+          }
+        ],
+        "charts": ["bar_chart", "pie_chart"],
+        "insights": "The Private Credit Fund has received predominantly positive feedback, indicating strong investor confidence.",
+        "source": "Internal Customer Feedback Survey"
+      },
+      "Employee Sentiment Analysis": {
+        "data": [
+          {
+            "employee": "Michel Lowy",
+            "positive": 80,
+            "neutral": 15,
+            "negative": 5,
+            "source": "Glassdoor Reviews"
+          },
+          {
+            "employee": "Soo Cheon Lee",
+            "positive": 70,
+            "neutral": 20,
+            "negative": 10,
+            "source": "LinkedIn Employee Reviews"
+          }
+        ],
+        "charts": ["bar_chart", "pie_chart"],
+        "insights": "Top executives, particularly Michel Lowy, are viewed positively, reflecting strong leadership perception.",
+        "source": "Glassdoor and LinkedIn Employee Reviews"
+      },
+      "Alerts and Recommendations": {
+        "alerts": [
+          {
+            "severity": "High",
+            "message": "Negative sentiment spike detected on Twitter.",
+            "source": "Twitter API Analysis"
+          },
+          {
+            "severity": "Medium",
+            "message": "Increased mentions from competitors.",
+            "source": "Brandwatch Competitive Monitoring"
+          }
+        ],
+        "recommendations": [
+          {
+            "action": "Engage with negative mentions",
+            "details": "Address concerns raised on Twitter to mitigate negative sentiment.",
+            "source": "Customer Experience Playbook"
+          },
+          {
+            "action": "Enhance positive outreach on LinkedIn",
+            "details": "Leverage LinkedIn's professional network to strengthen brand perception.",
+            "source": "LinkedIn Best Practices Guide"
+          }
+        ],
+        "insights": "Immediate engagement with negative mentions on Twitter is crucial to maintain brand reputation. Additionally, increasing positive outreach on LinkedIn can capitalize on existing engagement.",
+        "source": "Brand Monitoring Playbook"
+      },
+      "Competitor Comparison": {
+        "data": [
+          {
+            "competitor_name": "Heptagon Capital",
+            "sentiment_score": 70,
+            "source": "Brandwatch"
+          },
+          {
+            "competitor_name": "IlliquidX",
+            "sentiment_score": 65,
+            "source": "Brandwatch"
+          },
+          {
+            "competitor_name": "THE BARROS GROUP",
+            "sentiment_score": 80,
+            "source": "Brandwatch"
+          }
+        ],
+        "charts": ["comparison_chart"],
+        "insights": "SC Lowy's sentiment score is competitive, but there's room for improvement to surpass THE BARROS GROUP.",
+        "source": "Brandwatch Competitive Analysis"
+      },
+      "Trend Analysis": {
+        "data_points_over_time": [
+          {
+            "date": "2024-12-01",
+            "keywords": ["credit", "investment", "Asia"],
+            "source": "Google Trends"
+          },
+          {
+            "date": "2024-12-02",
+            "keywords": ["lending", "risk", "market"],
+            "source": "Google Trends"
+          },
+          {
+            "date": "2024-12-03",
+            "keywords": ["opportunity", "growth", "returns"],
+            "source": "Google Trends"
+          }
+        ],
+        "charts": ["timeline_graph", "keyword_cloud"],
+        "insights": "The evolving keyword trends suggest a shifting focus towards growth and returns, indicating market optimism.",
+        "source": "Google Trends Analysis"
+      }
+    },
+    "Dark Web Mentions": {
+      "Compromised Data Reports": {
+        "data": [],
+        "tables": ["compromised_credentials_table"],
+        "insights": "No compromised credentials detected, indicating strong security measures are in place.",
+        "source": "Dark Web Monitoring Tool (DarkOwl, Recorded Future)"
+      },
+      "Alerts": [
+        {
+          "severity": "Low",
+          "message": "No significant threats detected on the dark web.",
+          "source": "Dark Web Monitoring Tool (DarkOwl, Recorded Future)"
+        }
+      ],
+      "Recommendations": [
+        {
+          "action": "Maintain current security protocols",
+          "details": "Continue regular security audits and monitoring to ensure ongoing protection.",
+          "source": "ISO 27001 Compliance Guide"
+        }
+      ],
+      "Heatmap/FrequencyChart": {
+        "data": [
+          {
+            "date": "2024-12-01",
+            "mentions": 0,
+            "source": "Dark Web Monitoring Tool"
+          },
+          {
+            "date": "2024-12-02",
+            "mentions": 0,
+            "source": "Dark Web Monitoring Tool"
+          },
+          {
+            "date": "2024-12-03",
+            "mentions": 0,
+            "source": "Dark Web Monitoring Tool"
+          }
+        ],
+        "charts": ["heatmap_chart"],
+        "insights": "No dark web mentions detected, reflecting a secure digital footprint.",
+        "source": "Dark Web Monitoring Tool"
+      },
+      "Threat Actor Activity": [
+        {
+          "actor_name": "None",
+          "activity_level": "None",
+          "details": "No threat actor activity detected.",
+          "source": "Threat Intelligence Platform"
+        }
+      ],
+      "insights": "SC Lowy's digital assets are secure, with no detected threats or compromised data on the dark web.",
+      "source": "Threat Intelligence Platform"
+    },
+    "Risk Assessment": {
+      "Risk Overview": {
+        "data": [
+          {
+            "risk_level": "Critical",
+            "percentage": 10,
+            "source": "Internal Risk Assessment"
+          },
+          {
+            "risk_level": "High",
+            "percentage": 20,
+            "source": "Internal Risk Assessment"
+          },
+          {
+            "risk_level": "Medium",
+            "percentage": 30,
+            "source": "Internal Risk Assessment"
+          },
+          {
+            "risk_level": "Low",
+            "percentage": 40,
+            "source": "Internal Risk Assessment"
+          }
+        ],
+        "charts": ["donut_chart"],
+        "insights": "30% of risks are categorized as Critical or High, necessitating immediate mitigation strategies.",
+        "source": "Internal Risk Management Tools"
+      },
+      "Asset Inventory": {
+        "assets": [
+          {
+            "asset_name": "Investment Fund A",
+            "risk_tag": "High",
+            "source": "Asset Risk Register"
+          },
+          {
+            "asset_name": "Investment Fund B",
+            "risk_tag": "Medium",
+            "source": "Asset Risk Register"
+          }
+        ],
+        "tables": ["asset_inventory_table"],
+        "insights": "Investment Fund A is tagged as High risk, requiring prioritized risk management efforts.",
+        "source": "Asset Risk Register"
+      },
+      "Compliance and Policy Gaps": {
+        "data": [
+          {
+            "policy_name": "Data Protection Policy",
+            "score": 75,
+            "source": "ISO 27001 Audit Report"
+          },
+          {
+            "policy_name": "Risk Management Policy",
+            "score": 60,
+            "source": "ISO 27001 Audit Report"
+          }
+        ],
+        "charts": ["trendline_chart"],
+        "insights": "The Risk Management Policy score of 60% indicates significant room for improvement to meet compliance standards.",
+        "source": "ISO 27001 Audit Report"
+      }
+    }
+  },
+  "dashboard2": {
+    "Brand Monitoring": {
+      "Sentiment Analysis": {
+        "data": [
+          {
+            "date": "2024-12-01",
+            "positive": 150,
+            "neutral": 100,
+            "negative": 50,
+            "source": "Twitter API"
+          },
+          {
+            "date": "2024-12-02",
+            "positive": 130,
+            "neutral": 90,
+            "negative": 60,
+            "source": "LinkedIn Insights"
+          },
+          {
+            "date": "2024-12-03",
+            "positive": 170,
+            "neutral": 80,
+            "negative": 40,
+            "source": "Facebook Data"
+          }
+        ],
+        "charts": ["line_chart", "pie_chart"],
+        "insights": "Over the past three days, positive sentiments have consistently outnumbered neutral and negative sentiments, indicating a favorable brand perception.",
+        "source": "Aggregated Social Media Data (Hootsuite, Brandwatch)"
+      },
+      "Platform-Specific Insights": {
+        "data": [
+          { "platform": "Twitter", "mentions": 250, "source": "Twitter API" },
+          {
+            "platform": "LinkedIn",
+            "mentions": 180,
+            "source": "LinkedIn Insights"
+          },
+          { "platform": "Facebook", "mentions": 90, "source": "Facebook Data" }
+        ],
+        "charts": ["bar_chart"],
+        "tables": [
+          {
+            "mention": "@SC_Lowy Great insights on the Asian market!",
+            "platform": "Twitter",
+            "date": "2024-12-02",
+            "source": "Twitter API"
+          },
+          {
+            "mention": "SC Lowy's latest report is a must-read.",
+            "platform": "LinkedIn",
+            "date": "2024-12-01",
+            "source": "LinkedIn Insights"
+          }
+        ],
+        "insights": "Twitter has the highest engagement, with notable positive mentions highlighting SC Lowy's influence in the market.",
+        "source": "Aggregated Social Media Data (Hootsuite, Brandwatch)"
+      },
+      "Product Sentiment Analysis": {
+        "data": [
+          {
+            "product": "Private Credit Fund",
+            "positive": 120,
+            "neutral": 30,
+            "negative": 10,
+            "source": "SurveyMonkey Feedback"
+          },
+          {
+            "product": "Special Situations Fund",
+            "positive": 90,
+            "neutral": 40,
+            "negative": 20,
+            "source": "SurveyMonkey Feedback"
+          }
+        ],
+        "charts": ["bar_chart", "pie_chart"],
+        "insights": "The Private Credit Fund has received predominantly positive feedback, indicating strong investor confidence.",
+        "source": "Internal Customer Feedback Survey"
+      },
+      "Employee Sentiment Analysis": {
+        "data": [
+          {
+            "employee": "Michel Lowy",
+            "positive": 80,
+            "neutral": 15,
+            "negative": 5,
+            "source": "Glassdoor Reviews"
+          },
+          {
+            "employee": "Soo Cheon Lee",
+            "positive": 70,
+            "neutral": 20,
+            "negative": 10,
+            "source": "LinkedIn Employee Reviews"
+          }
+        ],
+        "charts": ["bar_chart", "pie_chart"],
+        "insights": "Top executives, particularly Michel Lowy, are viewed positively, reflecting strong leadership perception.",
+        "source": "Glassdoor and LinkedIn Employee Reviews"
+      },
+      "Alerts and Recommendations": {
+        "alerts": [
+          {
+            "severity": "High",
+            "message": "Negative sentiment spike detected on Twitter.",
+            "source": "Twitter API Analysis"
+          },
+          {
+            "severity": "Medium",
+            "message": "Increased mentions from competitors.",
+            "source": "Brandwatch Competitive Monitoring"
+          }
+        ],
+        "recommendations": [
+          {
+            "action": "Engage with negative mentions",
+            "details": "Address concerns raised on Twitter to mitigate negative sentiment.",
+            "source": "Customer Experience Playbook"
+          },
+          {
+            "action": "Enhance positive outreach on LinkedIn",
+            "details": "Leverage LinkedIn's professional network to strengthen brand perception.",
+            "source": "LinkedIn Best Practices Guide"
+          }
+        ],
+        "insights": "Immediate engagement with negative mentions on Twitter is crucial to maintain brand reputation. Additionally, increasing positive outreach on LinkedIn can capitalize on existing engagement.",
+        "source": "Brand Monitoring Playbook"
+      },
+      "Competitor Comparison": {
+        "data": [
+          {
+            "competitor_name": "Heptagon Capital",
+            "sentiment_score": 70,
+            "source": "Brandwatch"
+          },
+          {
+            "competitor_name": "IlliquidX",
+            "sentiment_score": 65,
+            "source": "Brandwatch"
+          },
+          {
+            "competitor_name": "THE BARROS GROUP",
+            "sentiment_score": 80,
+            "source": "Brandwatch"
+          }
+        ],
+        "charts": ["comparison_chart"],
+        "insights": "SC Lowy's sentiment score is competitive, but there's room for improvement to surpass THE BARROS GROUP.",
+        "source": "Brandwatch Competitive Analysis"
+      },
+      "Trend Analysis": {
+        "data_points_over_time": [
+          {
+            "date": "2024-12-01",
+            "keywords": ["credit", "investment", "Asia"],
+            "source": "Google Trends"
+          },
+          {
+            "date": "2024-12-02",
+            "keywords": ["lending", "risk", "market"],
+            "source": "Google Trends"
+          },
+          {
+            "date": "2024-12-03",
+            "keywords": ["opportunity", "growth", "returns"],
+            "source": "Google Trends"
+          }
+        ],
+        "charts": ["timeline_graph", "keyword_cloud"],
+        "insights": "The evolving keyword trends suggest a shifting focus towards growth and returns, indicating market optimism.",
+        "source": "Google Trends Analysis"
+      }
+    },
+    "Dark Web Mentions": {
+      "Compromised Data Reports": {
+        "data": [],
+        "tables": ["compromised_credentials_table"],
+        "insights": "No compromised credentials detected, indicating strong security measures are in place.",
+        "source": "Dark Web Monitoring Tool (DarkOwl, Recorded Future)"
+      },
+      "Alerts": [
+        {
+          "severity": "Low",
+          "message": "No significant threats detected on the dark web.",
+          "source": "Dark Web Monitoring Tool (DarkOwl, Recorded Future)"
+        }
+      ],
+      "Recommendations": [
+        {
+          "action": "Maintain current security protocols",
+          "details": "Continue regular security audits and monitoring to ensure ongoing protection.",
+          "source": "ISO 27001 Compliance Guide"
+        }
+      ],
+      "Heatmap/FrequencyChart": {
+        "data": [
+          {
+            "date": "2024-12-01",
+            "mentions": 0,
+            "source": "Dark Web Monitoring Tool"
+          },
+          {
+            "date": "2024-12-02",
+            "mentions": 0,
+            "source": "Dark Web Monitoring Tool"
+          },
+          {
+            "date": "2024-12-03",
+            "mentions": 0,
+            "source": "Dark Web Monitoring Tool"
+          }
+        ],
+        "charts": ["heatmap_chart"],
+        "insights": "No dark web mentions detected, reflecting a secure digital footprint.",
+        "source": "Dark Web Monitoring Tool"
+      },
+      "Threat Actor Activity": [
+        {
+          "actor_name": "None",
+          "activity_level": "None",
+          "details": "No threat actor activity detected.",
+          "source": "Threat Intelligence Platform"
+        }
+      ],
+      "insights": "SC Lowy's digital assets are secure, with no detected threats or compromised data on the dark web.",
+      "source": "Threat Intelligence Platform"
+    },
+    "Risk Assessment": {
+      "Risk Overview": {
+        "data": [
+          {
+            "risk_level": "Critical",
+            "percentage": 10,
+            "source": "Internal Risk Assessment"
+          },
+          {
+            "risk_level": "High",
+            "percentage": 20,
+            "source": "Internal Risk Assessment"
+          },
+          {
+            "risk_level": "Medium",
+            "percentage": 30,
+            "source": "Internal Risk Assessment"
+          },
+          {
+            "risk_level": "Low",
+            "percentage": 40,
+            "source": "Internal Risk Assessment"
+          }
+        ],
+        "charts": ["donut_chart"],
+        "insights": "30% of risks are categorized as Critical or High, necessitating immediate mitigation strategies.",
+        "source": "Internal Risk Management Tools"
+      },
+      "Asset Inventory": {
+        "assets": [
+          {
+            "asset_name": "Investment Fund A",
+            "risk_tag": "High",
+            "source": "Asset Risk Register"
+          },
+          {
+            "asset_name": "Investment Fund B",
+            "risk_tag": "Medium",
+            "source": "Asset Risk Register"
+          }
+        ],
+        "tables": ["asset_inventory_table"],
+        "insights": "Investment Fund A is tagged as High risk, requiring prioritized risk management efforts.",
+        "source": "Asset Risk Register"
+      },
+      "Compliance and Policy Gaps": {
+        "data": [
+          {
+            "policy_name": "Data Protection Policy",
+            "score": 75,
+            "source": "ISO 27001 Audit Report"
+          },
+          {
+            "policy_name": "Risk Management Policy",
+            "score": 60,
+            "source": "ISO 27001 Audit Report"
+          }
+        ],
+        "charts": ["trendline_chart"],
+        "insights": "The Risk Management Policy score of 60% indicates significant room for improvement to meet compliance standards.",
+        "source": "ISO 27001 Audit Report"
+      }
+    }
+  }
+}
