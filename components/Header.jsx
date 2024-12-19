@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const Header = () => {
+const Header = ({ loggedIn }) => {
   return (
     <nav className="header-desktop">
       <Link href="/">
@@ -15,12 +15,20 @@ const Header = () => {
       </Link>
 
       <div className="links">
-        <Link href="/signup" className="sign-up">
-          Signup
-        </Link>
-        <Link href="/login" className="login">
-          Login
-        </Link>
+        {loggedIn ? (
+          <Link href="/" className="login">
+            Logout
+          </Link>
+        ) : (
+          <>
+            <Link href="/signup" className="sign-up">
+              Signup
+            </Link>
+            <Link href="/login" className="login">
+              Login
+            </Link>
+          </>
+        )}
       </div>
     </nav>
   );

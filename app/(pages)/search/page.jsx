@@ -119,7 +119,7 @@ const Search = () => {
 
   return (
     <main className="search-bg">
-      <Header />
+      <Header loggedIn={true} />
       <div className="header-text">
         <h2>OSINT Search</h2>
         <button
