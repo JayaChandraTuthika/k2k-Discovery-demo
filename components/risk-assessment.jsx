@@ -1,6 +1,6 @@
 "use client";
 
-import { Pie, PieChart, Line, LineChart } from "recharts";
+import { Pie, PieChart, Line, LineChart, Cell } from "recharts";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChartContainer, ChartTooltip } from "@/components/ui/chart";
 import {
@@ -50,6 +50,7 @@ export default function RiskAssessment() {
       source: "Internal Risk Assessment Report",
     },
   ];
+  const COLORS = ["#FF0000", "#FFA500", "#00FF00"];
   console.log(riskTrends.data);
   return (
     <div className="space-y-4">
@@ -70,7 +71,7 @@ export default function RiskAssessment() {
                   return acc;
                 }, {})}
               >
-                <PieChart>
+                <PieChart width={400} height={400}>
                   <Pie
                     data={riskOverview.data}
                     dataKey="percentage"
@@ -78,7 +79,14 @@ export default function RiskAssessment() {
                     cx="50%"
                     cy="50%"
                     outerRadius={120}
-                  />
+                  >
+                    {riskOverview.data.map((entry, index) => (
+                      <Cell
+                        key={`cell-${index}`}
+                        fill={COLORS[index % COLORS.length]}
+                      />
+                    ))}
+                  </Pie>
                   <ChartTooltip />
                 </PieChart>
               </ChartContainer>

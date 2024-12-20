@@ -66,7 +66,7 @@ export default function BrandMonitoring() {
         <CardContent>
           <div className="space-y-4">
             <ChartContainer
-              className="h-[300px]"
+              className="h-[300px] w-full"
               config={{
                 positive: {
                   label: "Positive",
@@ -148,7 +148,13 @@ export default function BrandMonitoring() {
         <CardContent>
           <div className="space-y-4">
             {alertsAndRecommendations.alerts.map((alert, index) => (
-              <Alert key={index} variant={alert.severity.toLowerCase()}>
+              <Alert
+                key={index}
+                variant={alert.severity.toLowerCase()}
+                className={`text-slate-950 ${
+                  alert.severity == "High" ? "bg-red-400" : ""
+                } ${alert.severity == "Medium" ? "bg-yellow-400" : ""}`}
+              >
                 <AlertTitle>{alert.severity} Severity Alert</AlertTitle>
                 <AlertDescription>{alert.message}</AlertDescription>
               </Alert>

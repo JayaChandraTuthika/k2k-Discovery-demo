@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+// import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import {
   Table,
@@ -15,12 +15,93 @@ import { ChartContainer, ChartTooltip } from "@/components/ui/chart";
 import { Bar, BarChart } from "recharts";
 import { useData } from "../hooks/useData";
 
+//start
+import { Shield, CheckCircle } from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+
+function DarkwebMentionsTab() {
+  const recommendations = [
+    "Regularly update and patch all software and systems.",
+    "Implement strong, unique passwords for all accounts and use a password manager.",
+    "Enable two-factor authentication (2FA) wherever possible.",
+    "Educate employees about phishing attacks and social engineering tactics.",
+    "Encrypt sensitive data both at rest and in transit.",
+  ];
+
+  return (
+    <div className="container mx-auto p-4 space-y-6">
+      <Card className="bg-green-50 dark:bg-green-900">
+        <CardHeader>
+          <CardTitle className="text-2xl flex items-center gap-2 text-green-700 dark:text-green-300">
+            <Shield className="h-6 w-6" />
+            You're Safe on the Dark Web
+          </CardTitle>
+          <CardDescription className="text-green-600 dark:text-green-400">
+            We didn't find any mentions of your company on the dark web.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p className="text-green-700 dark:text-green-300 font-medium">
+            While this is good news, it's important to stay vigilant and
+            continue strengthening your security.
+          </p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-xl">Security Recommendations</CardTitle>
+          <CardDescription>
+            Consider implementing these measures to further enhance your
+            security posture:
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ul className="space-y-4">
+            {recommendations.map((recommendation, index) => (
+              <li key={index} className="flex items-start gap-2">
+                <CheckCircle className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
+                <span>{recommendation}</span>
+              </li>
+            ))}
+          </ul>
+        </CardContent>
+      </Card>
+
+      <Alert>
+        <AlertTitle className="text-lg font-semibold">
+          Stay Proactive
+        </AlertTitle>
+        <AlertDescription>
+          While your company wasn't found on the dark web, it's crucial to
+          maintain strong security practices. Regularly monitor your digital
+          footprint and keep your security measures up to date.
+        </AlertDescription>
+      </Alert>
+    </div>
+  );
+}
+
 export default function DarkWebMentions() {
   const { data, loading, error } = useData("dark-web-mentions");
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
   if (!data) return <div>No data available</div>;
+
+  const recommendations = [
+    "Regularly update and patch all software and systems.",
+    "Implement strong, unique passwords for all accounts and use a password manager.",
+    "Enable two-factor authentication (2FA) wherever possible.",
+    "Educate employees about phishing attacks and social engineering tactics.",
+    "Encrypt sensitive data both at rest and in transit.",
+  ];
 
   const {
     "Compromised Data Reports": compromisedData,
@@ -81,14 +162,18 @@ export default function DarkWebMentions() {
         </CardContent>
       </Card>
 
-      <Card>
+      <Card className="bg-transparent text-white">
         <CardHeader>
           <CardTitle>Alerts</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
             {alerts.map((alert, index) => (
-              <Alert key={index} variant={alert.severity.toLowerCase()}>
+              <Alert
+                key={index}
+                variant={alert.severity.toLowerCase()}
+                className="bg-green-300 text-slate-950"
+              >
                 <AlertTitle>{alert.severity} Severity</AlertTitle>
                 <AlertDescription>{alert.message}</AlertDescription>
               </Alert>
@@ -97,7 +182,7 @@ export default function DarkWebMentions() {
         </CardContent>
       </Card>
 
-      <Card className="bg-transparent text-white">
+      {/* <Card className="bg-transparent text-white">
         <CardHeader>
           <CardTitle>Mention Frequency</CardTitle>
         </CardHeader>
@@ -127,9 +212,9 @@ export default function DarkWebMentions() {
             </p>
           )}
         </CardContent>
-      </Card>
+      </Card> */}
 
-      <Card>
+      {/* <Card>
         <CardHeader>
           <CardTitle>Threat Actor Activity</CardTitle>
         </CardHeader>
@@ -159,7 +244,55 @@ export default function DarkWebMentions() {
             </p>
           )}
         </CardContent>
+      </Card> */}
+      <Card className="bg-green-50 dark:bg-green-900">
+        <CardHeader>
+          <CardTitle className="text-2xl flex items-center gap-2 text-green-700 dark:text-green-300">
+            <Shield className="h-6 w-6" />
+            You're Safe on the Dark Web
+          </CardTitle>
+          <CardDescription className="text-green-600 dark:text-green-400">
+            We didn't find any mentions of your company on the dark web.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p className="text-green-700 dark:text-green-300 font-medium">
+            While this is good news, it's important to stay vigilant and
+            continue strengthening your security.
+          </p>
+        </CardContent>
       </Card>
+
+      <Card className="bg-transparent text-white">
+        <CardHeader>
+          <CardTitle className="text-xl">Security Recommendations</CardTitle>
+          <CardDescription>
+            Consider implementing these measures to further enhance your
+            security posture:
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ul className="space-y-4">
+            {recommendations.map((recommendation, index) => (
+              <li key={index} className="flex items-start gap-2">
+                <CheckCircle className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
+                <span>{recommendation}</span>
+              </li>
+            ))}
+          </ul>
+        </CardContent>
+      </Card>
+
+      <Alert className="text-white">
+        <AlertTitle className="text-lg font-semibold">
+          Stay Proactive
+        </AlertTitle>
+        <AlertDescription>
+          While your company wasn't found on the dark web, it's crucial to
+          maintain strong security practices. Regularly monitor your digital
+          footprint and keep your security measures up to date.
+        </AlertDescription>
+      </Alert>
     </div>
   );
 }
