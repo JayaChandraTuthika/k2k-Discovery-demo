@@ -1,6 +1,6 @@
 "use client";
 
-import { Pie, PieChart, Line, LineChart, Cell } from "recharts";
+import { Pie, PieChart, Line, LineChart, Cell, Tooltip } from "recharts";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChartContainer, ChartTooltip } from "@/components/ui/chart";
 import {
@@ -12,6 +12,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useData } from "../hooks/useData";
+import Chart from "chart.js/auto";
 
 export default function RiskAssessment() {
   const { data, loading, error } = useData("risk-assessment");
@@ -50,14 +51,16 @@ export default function RiskAssessment() {
       source: "Internal Risk Assessment Report",
     },
   ];
-  const COLORS = ["#FF0000", "#FFA500", "#00FF00"];
+  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
   console.log(riskTrends.data);
   return (
     <div className="space-y-4">
       <div className="grid gap-4 md:grid-cols-2">
-        <Card>
+        <Card className="dashboard-card">
           <CardHeader>
-            <CardTitle>Risk Overview</CardTitle>
+            <CardTitle>
+              Risk Overview : Internal Risk Assessment Report
+            </CardTitle>
           </CardHeader>
           <CardContent>
             {riskOverview.data.length > 0 ? (
@@ -78,6 +81,9 @@ export default function RiskAssessment() {
                     nameKey="risk_level"
                     cx="50%"
                     cy="50%"
+                    fill="#8884d8"
+                    labelLine={true}
+                    label
                     outerRadius={120}
                   >
                     {riskOverview.data.map((entry, index) => (
@@ -87,7 +93,7 @@ export default function RiskAssessment() {
                       />
                     ))}
                   </Pie>
-                  <ChartTooltip />
+                  <Tooltip />
                 </PieChart>
               </ChartContainer>
             ) : (
@@ -96,7 +102,7 @@ export default function RiskAssessment() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="dashboard-card">
           <CardHeader>
             <CardTitle>Asset Inventory</CardTitle>
           </CardHeader>
@@ -104,14 +110,17 @@ export default function RiskAssessment() {
             {assetInventory.data.length > 0 ? (
               <Table>
                 <TableHeader>
-                  <TableRow>
+                  <TableRow
+                    className="hover:bg-transparent"
+                    className="hover:bg-transparent"
+                  >
                     <TableHead>Asset</TableHead>
                     <TableHead>Risk Level</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {assetInventory.data.map((asset, index) => (
-                    <TableRow key={index}>
+                    <TableRow className="hover:bg-transparent" key={index}>
                       <TableCell>{asset.asset_name}</TableCell>
                       <TableCell
                         className={`text-${asset.risk_tag.toLowerCase()}`}
@@ -129,7 +138,7 @@ export default function RiskAssessment() {
         </Card>
       </div>
 
-      <Card>
+      <Card className="dashboard-card">
         <CardHeader>
           <CardTitle>Compliance and Policy Gaps</CardTitle>
         </CardHeader>
@@ -137,14 +146,17 @@ export default function RiskAssessment() {
           {complianceGaps.data.length > 0 ? (
             <Table>
               <TableHeader>
-                <TableRow>
+                <TableRow
+                  className="hover:bg-transparent"
+                  className="hover:bg-transparent"
+                >
                   <TableHead>Policy</TableHead>
                   <TableHead>Score</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {complianceGaps.data.map((item, index) => (
-                  <TableRow key={index}>
+                  <TableRow className="hover:bg-transparent" key={index}>
                     <TableCell>{item.policy_name}</TableCell>
                     <TableCell>{item.score}%</TableCell>
                   </TableRow>
@@ -183,7 +195,7 @@ export default function RiskAssessment() {
         </CardContent>
       </Card> */}
 
-      <Card>
+      <Card className="dashboard-card">
         <CardHeader>
           <CardTitle>Mitigation Plan</CardTitle>
         </CardHeader>

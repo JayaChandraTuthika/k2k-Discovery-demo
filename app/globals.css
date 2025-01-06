@@ -36,11 +36,7 @@ body {
   z-index: 99;
   width: 100%;
   color: white;
-  background-image: linear-gradient(
-    to bottom right,
-    rgba(84, 84, 84, 0.178),
-    rgba(66, 66, 66, 0.196)
-  );
+  background-image: linear-gradient(to bottom right, rgba(84, 84, 84, 0.178), rgba(66, 66, 66, 0.196));
   backdrop-filter: blur(5px);
   padding: 15px 40px;
   display: flex;
@@ -349,6 +345,12 @@ body {
   font-weight: 500;
   border-radius: 7px;
 }
+.login-form .social-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
 .login-form .end-text {
   font-size: 14px;
   font-weight: 200;
@@ -546,11 +548,7 @@ body {
 }
 .failed-toast {
   border: none;
-  background-image: linear-gradient(
-    to bottom right,
-    rgb(235, 56, 98),
-    rgb(235, 96, 128)
-  ) !important;
+  background-image: linear-gradient(to bottom right, rgb(235, 56, 98), rgb(235, 96, 128)) !important;
   color: white !important;
 }
 .options-menu {
@@ -569,6 +567,38 @@ body {
 .custom-node-child {
   background-color: #97eaff;
   color: rgb(0, 0, 0);
+}
+.dashboard-card {
+  background-color: transparent;
+  background-image: linear-gradient(to right, rgba(128, 128, 128, 0.062), rgba(128, 128, 128, 0.078));
+  color: white;
+  border: 1px solid rgba(150, 150, 150, 0.098);
+}
+.data-\[state\=active\]\:text-foreground[data-state="active"] {
+  color: transparent !important;
+  background-image: var(--infosec-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  box-shadow: none;
+}
+.custom-tooltip {
+  background-color: #ffffff;
+  border-radius: 6px;
+  border: 1px solid rgb(185, 224, 255);
+  padding: 10px;
+}
+.custom-tooltip .label {
+  color: black;
+}
+.custom-tooltip .label {
+  color: black;
+}
+.custom-tooltip .intro {
+  color: rgba(0, 0, 0, 0.735);
+}
+.custom-tooltip .desc {
+  color: rgba(0, 0, 0, 0.461);
 }
 @layer base {
   :root {

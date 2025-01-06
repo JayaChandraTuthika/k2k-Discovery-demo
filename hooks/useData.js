@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { fetchData } from "../utils/api";
+import jsonData from "./data.json";
 
 export function useData(endpoint) {
   const [data, setData] = useState(null);
@@ -13,7 +14,21 @@ export function useData(endpoint) {
       try {
         const result = await fetchData(endpoint);
         if (isMounted) {
-          setData(result);
+          if (endpoint === "brand-monitoring") {
+            endpoint = "Brand Monitoring";
+          } else if (endpoint === "dark-web-mentions") {
+            endpoint = "Dark Web Mentions";
+          } else if (endpoint === "risk-assessment") {
+            endpoint = "Risk Assessment";
+          } else if (endpoint === "threat-intelligence") {
+            endpoint = "Threat Intelligence";
+          } else if (endpoint === "market-analysis") {
+            endpoint = "Market Analysis";
+          }
+          console.log(endpoint);
+
+          console.log(jsonData.dashboard[0][endpoint]);
+          setData(jsonData.dashboard[0][endpoint]);
           setLoading(false);
         }
       } catch (err) {

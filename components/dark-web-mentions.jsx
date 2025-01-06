@@ -130,7 +130,7 @@ export default function DarkWebMentions() {
 
   return (
     <div className="space-y-6">
-      <Card>
+      <Card className="dashboard-card">
         <CardHeader>
           <CardTitle>Compromised Data Reports</CardTitle>
         </CardHeader>
@@ -138,7 +138,10 @@ export default function DarkWebMentions() {
           {compromisedData.data.length > 0 ? (
             <Table>
               <TableHeader>
-                <TableRow>
+                <TableRow
+                  className="hover:bg-transparent"
+                  className="hover:bg-transparent"
+                >
                   <TableHead>Type</TableHead>
                   <TableHead>Status</TableHead>
                   <TableHead>Last Checked</TableHead>
@@ -146,7 +149,7 @@ export default function DarkWebMentions() {
               </TableHeader>
               <TableBody>
                 {compromisedData.data.map((item, index) => (
-                  <TableRow key={index}>
+                  <TableRow className="hover:bg-transparent" key={index}>
                     <TableCell>{item.type}</TableCell>
                     <TableCell>{item.status}</TableCell>
                     <TableCell>{item.lastChecked}</TableCell>
@@ -162,7 +165,7 @@ export default function DarkWebMentions() {
         </CardContent>
       </Card>
 
-      <Card className="bg-transparent text-white">
+      <Card className="dashboard-card">
         <CardHeader>
           <CardTitle>Alerts</CardTitle>
         </CardHeader>
@@ -222,7 +225,7 @@ export default function DarkWebMentions() {
           {threatActorActivity.length > 0 ? (
             <Table>
               <TableHeader>
-                <TableRow>
+                  <TableRow className="hover:bg-transparent"  className="hover:bg-transparent">
                   <TableHead>Actor Name</TableHead>
                   <TableHead>Activity Level</TableHead>
                   <TableHead>Details</TableHead>
@@ -230,7 +233,7 @@ export default function DarkWebMentions() {
               </TableHeader>
               <TableBody>
                 {threatActorActivity.map((actor, index) => (
-                  <TableRow key={index}>
+                   <TableRow className="hover:bg-transparent"  key={index}>
                     <TableCell>{actor.actor_name}</TableCell>
                     <TableCell>{actor.activity_level}</TableCell>
                     <TableCell>{actor.details}</TableCell>
@@ -245,7 +248,7 @@ export default function DarkWebMentions() {
           )}
         </CardContent>
       </Card> */}
-      <Card className="bg-green-50 dark:bg-green-900">
+      <Card className="dashboard-card">
         <CardHeader>
           <CardTitle className="text-2xl flex items-center gap-2 text-green-700 dark:text-green-300">
             <Shield className="h-6 w-6" />
@@ -263,7 +266,7 @@ export default function DarkWebMentions() {
         </CardContent>
       </Card>
 
-      <Card className="bg-transparent text-white">
+      <Card className="dashboard-card">
         <CardHeader>
           <CardTitle className="text-xl">Security Recommendations</CardTitle>
           <CardDescription>
@@ -283,7 +286,7 @@ export default function DarkWebMentions() {
         </CardContent>
       </Card>
 
-      <Alert className="text-white">
+      <Alert className="dashboard-card">
         <AlertTitle className="text-lg font-semibold">
           Stay Proactive
         </AlertTitle>

@@ -10,9 +10,55 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Bar, BarChart, Line, LineChart } from "recharts";
+import {
+  Bar,
+  BarChart,
+  Line,
+  LineChart,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 import { ChartContainer, ChartTooltip } from "@/components/ui/chart";
 import { useData } from "../hooks/useData";
+
+const getIntroOfPage = (label) => {
+  if (label === "Page A") {
+    return "Page A is about men's clothing";
+  }
+  if (label === "Page B") {
+    return "Page B is about women's dress";
+  }
+  if (label === "Page C") {
+    return "Page C is about women's bag";
+  }
+  if (label === "Page D") {
+    return "Page D is about household goods";
+  }
+  if (label === "Page E") {
+    return "Page E is about food";
+  }
+  if (label === "Page F") {
+    return "Page F is about baby food";
+  }
+  return "";
+};
+
+const CustomTooltip = ({ active, payload, label }) => {
+  // console.log(payload, label);
+  if (active && payload && payload.length) {
+    return (
+      <div className="custom-tooltip">
+        {/* <p>test</p> */}
+        <p className="label">{`${label} : ${payload[0].value}`}</p>
+        <p className="intro">{payload[0].payload.performance_metric}</p>
+        {/* <p className="desc">Anything you want can be displayed here.</p> */}
+      </div>
+    );
+  }
+
+  return null;
+};
 
 export default function MarketAnalysis() {
   const { data, loading, error } = useData("market-analysis");
@@ -50,10 +96,11 @@ export default function MarketAnalysis() {
       source: "Reuters",
     },
   ];
+  // console.log(marketTrends);
 
   return (
     <div className="space-y-6">
-      <Card className="bg-transparent text-white">
+      <Card className="dashboard-card">
         <CardHeader>
           <CardTitle>Competitor Activity</CardTitle>
         </CardHeader>
@@ -69,9 +116,43 @@ export default function MarketAnalysis() {
                 return acc;
               }, {})}
             >
-              <BarChart data={competitorActivity.data}>
+              {/* <BarChart data={competitorActivity.data}>
                 <Bar dataKey="metric" fill="#b05665" />
                 <ChartTooltip />
+              </BarChart> */}
+              <BarChart
+                width={100}
+                height={300}
+                data={competitorActivity.data}
+                margin={{
+                  top: 5,
+                  right: 0,
+                  left: 0,
+                  bottom: 5,
+                }}
+                barSize={50}
+              >
+                <XAxis
+                  dataKey="competitor_name"
+                  scale="point"
+                  padding={{ left: 50, right: 50 }}
+                />
+                <YAxis />
+                {/* <Tooltip /> */}
+                {/* <Legend /> */}
+                {/* <CartesianGrid strokeDasharray="3 3" /> */}
+                {/* <Bar
+                                dataKey="mentions"
+                                fill="transparent"
+                                // background={{ fill: "transparent" }}
+                              /> */}
+                <Bar
+                  dataKey="metric"
+                  fill="#03e2ff"
+
+                  // background={{ fill: "transparent" }}
+                />
+                <Tooltip content={<CustomTooltip />} />
               </BarChart>
             </ChartContainer>
           ) : (
@@ -83,7 +164,7 @@ export default function MarketAnalysis() {
         </CardContent>
       </Card>
 
-      <Card>
+      <Card className="dashboard-card">
         <CardHeader>
           <CardTitle>Market Trends</CardTitle>
         </CardHeader>
@@ -102,14 +183,19 @@ export default function MarketAnalysis() {
               }, {})}
             >
               <LineChart data={marketTrends.data}>
+                <XAxis dataKey="date" />
+                <YAxis />
+                <Tooltip />
                 {marketTrends.data[0].trending_keywords.map(
                   (keyword, index) => (
                     <Line
                       key={index}
                       type="monotone"
+                      strokeWidth={3}
                       dataKey={(item) =>
                         item.trending_keywords.includes(keyword) ? 1 : 0
                       }
+                      activeDot={{ r: 8 }}
                       name={keyword}
                     />
                   )
@@ -126,7 +212,7 @@ export default function MarketAnalysis() {
         </CardContent>
       </Card>
 
-      <Card>
+      <Card className="dashboard-card">
         <CardHeader>
           <CardTitle>Comparative Analysis</CardTitle>
         </CardHeader>
@@ -134,7 +220,10 @@ export default function MarketAnalysis() {
           {comparativeAnalysis.data.length > 0 ? (
             <Table>
               <TableHeader>
-                <TableRow>
+                <TableRow
+                  className="hover:bg-transparent"
+                  className="hover:bg-transparent"
+                >
                   <TableHead>Metric</TableHead>
                   <TableHead>SC Lowy</TableHead>
                   {Object.keys(
@@ -146,7 +235,7 @@ export default function MarketAnalysis() {
               </TableHeader>
               <TableBody>
                 {comparativeAnalysis.data.map((item, index) => (
-                  <TableRow key={index}>
+                  <TableRow className="hover:bg-transparent" key={index}>
                     <TableCell>{item.metric_name}</TableCell>
                     <TableCell>{item.SC_Lowy_value}</TableCell>
                     {Object.values(item.Competitor_value).map(
@@ -167,7 +256,7 @@ export default function MarketAnalysis() {
         </CardContent>
       </Card>
 
-      <Card>
+      <Card className="dashboard-card">
         <CardHeader>
           <CardTitle>Opportunities & Threats</CardTitle>
         </CardHeader>
@@ -198,7 +287,7 @@ export default function MarketAnalysis() {
         </CardContent>
       </Card>
 
-      <Card>
+      <Card className="dashboard-card">
         <CardHeader>
           <CardTitle>Dashboard Insights</CardTitle>
         </CardHeader>
